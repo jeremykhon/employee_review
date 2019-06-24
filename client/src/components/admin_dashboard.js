@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Sidebar from 'react-sidebar';
 import EmployeeList from './employee_list';
+import EmployeeProfile from './employee_profile';
 
 const BASE_URL = '/api/v1';
 
@@ -44,8 +45,6 @@ class AdminDashboard extends Component {
     this.setState({ sidebarOpen: open });
   }
 
-  
-
   render() {
     const { employees, selectedEmployeeId, sidebarDocked, sidebarOpen } = this.state;
     return (
@@ -62,9 +61,7 @@ class AdminDashboard extends Component {
           docked={sidebarDocked}
           onSetOpen={this.onSetSidebarOpen}
         >
-          <div>
-            right-side
-          </div>
+          <EmployeeProfile selectedEmployeeId={selectedEmployeeId} />
         </Sidebar>
       </div>
     );
