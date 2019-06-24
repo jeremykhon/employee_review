@@ -1,5 +1,4 @@
 class Api::V1::FeedbacksController < ApplicationController
-  # before_action :set_employee, only: %i[create]
   before_action :set_performance_review, only: %i[create index_by_performance_review]
 
   def index
@@ -22,7 +21,9 @@ class Api::V1::FeedbacksController < ApplicationController
   def update
     feedback = Feedback.find_by!(id: params[:id])
     feedback.update!(feedback_params)
-    head :ok
+    feedback.completed_at = params[:completed] ? DateTime.now : nil
+    feedback.save!
+    render json: feedback
   end
 
   def index_by_performance_review
@@ -31,10 +32,6 @@ class Api::V1::FeedbacksController < ApplicationController
   end
 
   private
-
-  def set_employee
-    @employee = Employee.find_by!(id: params[:employee_id])
-  end
 
   def set_performance_review
     @performance_review = PerformanceReview.find_by!(id: params[:performance_review_id])
