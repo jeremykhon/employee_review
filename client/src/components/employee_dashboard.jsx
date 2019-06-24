@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 class EmployeeDashboard extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       feedbacks: [],
-    }
+    };
   }
 
   render() {

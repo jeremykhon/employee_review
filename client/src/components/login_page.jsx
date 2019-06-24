@@ -5,8 +5,8 @@ class LoginPage extends Component {
     super()
     this.state = {
       email: '',
-      password: ''
-    }
+      password: '',
+    };
   }
 
   render() {
