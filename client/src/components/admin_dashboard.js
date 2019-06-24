@@ -23,10 +23,10 @@ class AdminDashboard extends Component {
   }
 
   render() {
-    const { employees } = this.state
+    const { employees, selectedEmployee } = this.state
     return (
       <div>
-        {employees.map(employee => <EmployeeListItem key={employee.id} employee={employee} selectEmployee={this.selectEmployee} />)}
+        {employees.map(employee => <EmployeeListItem key={employee.id} employee={employee} selectEmployee={this.selectEmployee} selectedEmployee={selectedEmployee} />)}
       </div>
     );
   }
