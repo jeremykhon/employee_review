@@ -11,7 +11,9 @@ class Api::V1::FeedbacksController < ApplicationController
     employee_ids = params[:employee_ids].to_a
     employee_ids.each do |employee_id|
       employee = Employee.find_by(id: employee_id)
-      Feedback.create(employee: employee, performance_review: @performance_review)
+      unless employee.nil?
+        Feedback.create(employee: employee, performance_review: @performance_review)
+      end
     end
     feedbacks = Feedback.where(performance_review: @performance_review)
     render json: feedbacks
