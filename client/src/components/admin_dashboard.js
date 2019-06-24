@@ -7,7 +7,8 @@ class AdminDashboard extends Component {
   constructor() {
     super()
     this.state = {
-      employees: []
+      employees: [],
+      selectedEmployee: null,
     }
   }
 
@@ -17,11 +18,15 @@ class AdminDashboard extends Component {
     .catch(error => console.log(error));
   }
 
+  selectEmployee = (employee) => {
+    this.setState({ selectedEmployee: employee })
+  }
+
   render() {
     const { employees } = this.state
     return (
       <div>
-        {employees.map(employee => <EmployeeListItem key={employee.id} employee={employee} />)}
+        {employees.map(employee => <EmployeeListItem key={employee.id} employee={employee} selectEmployee={this.selectEmployee} />)}
       </div>
     );
   }
