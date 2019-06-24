@@ -8,7 +8,7 @@ import EmployeeDashboard from './employee_dashboard';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       employee: null,
     };
@@ -21,8 +21,9 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/admin" component={AdminDashboard} />
-          <Route exact path="/employee" component={EmployeeDashboard} />
+          <Route exact path="/admin/employees/:employee_id" component={AdminDashboard} />
+          <Route path="/admin*" component={AdminDashboard} />
+          <Route path="/employee*" component={EmployeeDashboard} />
         </Switch>
       </Router>
     );

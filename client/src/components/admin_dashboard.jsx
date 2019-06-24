@@ -2,20 +2,28 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Sidebar from 'react-sidebar';
 import EmployeeList from './employee_list';
+import history from '../utilities/history';
 
 const BASE_URL = '/api/v1';
 
 const mql = window.matchMedia('(min-width: 800px)');
 
 class AdminDashboard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       employees: [],
-      selectedEmployee: null,
+      selectedEmployeeId: null || this.props.match.params.employee_id,
       sidebarOpen: false,
       sidebarDocked: mql.matches,
     };
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.match.params.employee_id !== prevState.selectedEmployeeId) {
+      return { selectedEmployeeId: nextProps.match.params.employee_id };
+    }
+    return null;
   }
 
   componentDidMount() {
@@ -37,12 +45,12 @@ class AdminDashboard extends Component {
     this.setState({ sidebarOpen: open });
   }
 
-  selectEmployee = (employee) => {
-    this.setState({ selectedEmployee: employee });
+  selectEmployee = (employee_id) => {
+    history.push(`/admin/employees/${employee_id}`);
   }
 
   render() {
-    const { employees, selectedEmployee, sidebarDocked, sidebarOpen } = this.state;
+    const { employees, selectedEmployeeId, sidebarDocked, sidebarOpen } = this.state;
     return (
       <div>
         <Sidebar
@@ -50,7 +58,7 @@ class AdminDashboard extends Component {
             <EmployeeList
               employees={employees}
               selectEmployee={this.selectEmployee}
-              selectedEmployee={selectedEmployee}
+              selectedEmployeeId={selectedEmployeeId}
             />
           )}
           open={sidebarOpen}

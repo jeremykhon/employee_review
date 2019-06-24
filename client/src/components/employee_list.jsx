@@ -1,7 +1,7 @@
 import React from 'react';
 import EmployeeListItem from './employee_list_item';
 
-const EmployeeList = ({ employees, selectEmployee, selectedEmployee }) => {
+const EmployeeList = ({ employees, selectEmployee, selectedEmployeeId }) => {
   return (
     <div className="employees-list">
       <div className="employees-list-title">All Employees</div>
@@ -10,7 +10,7 @@ const EmployeeList = ({ employees, selectEmployee, selectedEmployee }) => {
           key={employee.id}
           employee={employee}
           selectEmployee={selectEmployee}
-          selectedEmployee={selectedEmployee}
+          selectedEmployeeId={selectedEmployeeId}
         />
       ))}
     </div>
