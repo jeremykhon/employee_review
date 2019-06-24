@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import UpdateEmployeeModal from './update_employee_modal';
 import DeleteEmployeeModal from './delete_employee_modal';
 
 Modal.setAppElement('#root');
@@ -48,7 +49,7 @@ class EmployeeInfoCard extends Component {
     const { employee, fetchEmployees, clearEmployee } = this.props;
     if (updating) {
       return (
-        <div>updating</div>
+        <UpdateEmployeeModal employee={employee} closeModal={this.closeModal} />
       );
     }
     return (
