@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Sidebar from 'react-sidebar';
 import EmployeeList from './employee_list';
-import history from '../utilities/history';
 
 const BASE_URL = '/api/v1';
 
@@ -45,9 +44,7 @@ class AdminDashboard extends Component {
     this.setState({ sidebarOpen: open });
   }
 
-  selectEmployee = (employee_id) => {
-    history.push(`/admin/employees/${employee_id}`);
-  }
+  
 
   render() {
     const { employees, selectedEmployeeId, sidebarDocked, sidebarOpen } = this.state;
