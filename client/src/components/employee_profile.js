@@ -39,7 +39,7 @@ class EmployeeProfile extends Component {
       return (
         <div className="employee-profile">
           <div className="section-titles">Employee Information</div>
-          <EmployeeInfoCard employee={employee} fetchEmployees={fetchEmployees} clearEmployee={this.clearEmployee} />
+          <EmployeeInfoCard employee={employee} fetchEmployee={this.fetchEmployee} fetchEmployees={fetchEmployees} clearEmployee={this.clearEmployee} />
           <div className="section-titles">Performance Reviews</div>
           <PerformanceReviewsContainer performanceReviews={employee.performance_reviews} />
         </div>

@@ -46,10 +46,10 @@ class EmployeeInfoCard extends Component {
 
   modalContent = () => {
     const { updating } = this.state;
-    const { employee, fetchEmployees, clearEmployee } = this.props;
+    const { employee, fetchEmployees, clearEmployee, fetchEmployee } = this.props;
     if (updating) {
       return (
-        <UpdateEmployeeModal employee={employee} closeModal={this.closeModal} />
+        <UpdateEmployeeModal employee={employee} fetchEmployee={fetchEmployee} closeModal={this.closeModal} />
       );
     }
     return (
