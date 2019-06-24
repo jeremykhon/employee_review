@@ -3,8 +3,7 @@ import axios from 'axios';
 import Sidebar from 'react-sidebar';
 import EmployeeList from './employee_list';
 import EmployeeProfile from './employee_profile';
-
-const BASE_URL = '/api/v1';
+import BASE_URL from '../utilities/base_url';
 
 const mql = window.matchMedia('(min-width: 800px)');
 
