@@ -11,12 +11,12 @@ const deleteEmployee = (employee, fetchEmployees, clearEmployee) => {
     .catch(error => console.log(error));
 };
 
-const DeleteEmployeeModal = ({ employee, fetchEmployees, clearEmployee }) => {
+const DeleteEmployeeModal = ({ employee, fetchEmployees, clearEmployee, closeModal }) => {
   return (
     <div>
-      <div>are you sure?</div>
+      <div>Are you sure you want to delete this employee? All ongoing feedbacks that he/she is participating and performance reports that he/she belongs to will also be deleted</div>
       <button type="button" onClick={() => { deleteEmployee(employee, fetchEmployees, clearEmployee); }}>yes</button>
-      <button type="button">no</button>
+      <button type="button" onClick={closeModal}>no</button>
     </div>
   );
 };

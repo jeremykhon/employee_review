@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import DeleteEmployeeModal from './delete_employee_modal';
 
+Modal.setAppElement('#root');
+
 const customStyles = {
   overlay: {
     zIndex: '2',
@@ -50,7 +52,7 @@ class EmployeeInfoCard extends Component {
       );
     }
     return (
-      <DeleteEmployeeModal employee={employee} fetchEmployees={fetchEmployees} clearEmployee={clearEmployee} />
+      <DeleteEmployeeModal employee={employee} fetchEmployees={fetchEmployees} clearEmployee={clearEmployee} closeModal={this.closeModal} />
     );
   }
 
