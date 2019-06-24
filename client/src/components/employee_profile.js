@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import BASE_URL from '../utilities/base_url';
+import EmployeeInfoCard from './employee_info_card';
+import PerformanceReviewsContainer from './performance_reviews_container';
 
 class EmployeeProfile extends Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class EmployeeProfile extends Component {
   }
 
   componentDidMount() {
-    this.fetchEmployee();
+    this.fetchEmployee(this.props.selectedEmployeeId);
   }
 
   componentDidUpdate(prevProps) {
@@ -27,17 +29,12 @@ class EmployeeProfile extends Component {
   }
 
   render() {
-    const { selectedEmployeeId } = this.props;
     const { employee } = this.state;
     if (employee) {
       return (
         <div className="employee-profile">
-          <div>
-            {selectedEmployeeId}
-          </div>
-          <div>
-            {employee.first_name}
-          </div>
+          <EmployeeInfoCard employee={employee} />
+          <PerformanceReviewsContainer performanceReviews={employee.performance_reviews} />
         </div>
       );
     }

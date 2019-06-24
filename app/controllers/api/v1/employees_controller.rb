@@ -7,7 +7,7 @@ class Api::V1::EmployeesController < ApplicationController
   end
 
   def show
-    render json: @employee, only: %i[id first_name last_name email]
+    render json: @employee, only: %i[id first_name last_name email], include: :performance_reviews
   end
 
   def create
