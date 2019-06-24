@@ -1,0 +1,41 @@
+.employee-info-card {
+  border: 1px solid rgb(240,240,240);
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.employee-info-table {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.employee-info-labels {
+  margin-right: 40px;
+}
+
+.employee-info-values {
+  color: rgb(100, 100, 100);
+}
+
+.employee-info-buttons-container {
+  display: flex;
+}
+
+.white-button {
+  padding: 5px 15px;
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 3px;
+  color: inherit;
+  background-color: white;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 100ms ease-in;
+  margin-right: 10px;
+
+  &:hover {
+    color: white;
+    background-color: black;  
+  }
+}

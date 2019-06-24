@@ -33,7 +33,9 @@ class EmployeeProfile extends Component {
     if (employee) {
       return (
         <div className="employee-profile">
+          <div className="section-titles">Employee Information</div>
           <EmployeeInfoCard employee={employee} />
+          <div className="section-titles">Performance Reviews</div>
           <PerformanceReviewsContainer performanceReviews={employee.performance_reviews} />
         </div>
       );
