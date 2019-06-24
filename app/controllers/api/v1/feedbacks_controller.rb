@@ -1,12 +1,12 @@
 class Api::V1::FeedbacksController < ApplicationController
-  before_action :set_performance_review, only: %i[create index_by_performance_review]
+  before_action :set_performance_review, only: %i[create_many index_by_performance_review]
 
   def index
     feedbacks = Feedback.where(employee_id: params[:employee_id])
     render json: feedbacks
   end
 
-  def create
+  def create_many
     employee_ids = params[:employee_ids].to_a
     employee_ids.each do |employee_id|
       employee = Employee.find_by(id: employee_id)
