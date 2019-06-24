@@ -28,13 +28,18 @@ class EmployeeProfile extends Component {
       .catch(error => console.log(error));
   }
 
+  clearEmployee = () => {
+    this.setState({ employee: null });
+  }
+
   render() {
     const { employee } = this.state;
+    const { fetchEmployees } = this.props;
     if (employee) {
       return (
         <div className="employee-profile">
           <div className="section-titles">Employee Information</div>
-          <EmployeeInfoCard employee={employee} />
+          <EmployeeInfoCard employee={employee} fetchEmployees={fetchEmployees} clearEmployee={this.clearEmployee} />
           <div className="section-titles">Performance Reviews</div>
           <PerformanceReviewsContainer performanceReviews={employee.performance_reviews} />
         </div>

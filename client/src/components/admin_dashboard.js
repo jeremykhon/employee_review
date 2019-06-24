@@ -27,13 +27,17 @@ class AdminDashboard extends Component {
 
   componentDidMount() {
     mql.addListener(this.mediaQueryChanged);
-    axios.get(`${BASE_URL}/employees`)
-      .then(response => this.setState({ employees: response.data }))
-      .catch(error => console.log(error));
+    this.fetchEmployees();
   }
 
   componentWillUnmount() {
     mql.removeListener(this.mediaQueryChanged);
+  }
+
+  fetchEmployees = () => {
+    axios.get(`${BASE_URL}/employees`)
+      .then(response => this.setState({ employees: response.data }))
+      .catch(error => console.log(error));
   }
 
   mediaQueryChanged = () => {
@@ -60,7 +64,7 @@ class AdminDashboard extends Component {
           docked={sidebarDocked}
           onSetOpen={this.onSetSidebarOpen}
         >
-          <EmployeeProfile selectedEmployeeId={selectedEmployeeId} />
+          <EmployeeProfile selectedEmployeeId={selectedEmployeeId} fetchEmployees={this.fetchEmployees} />
         </Sidebar>
       </div>
     );
