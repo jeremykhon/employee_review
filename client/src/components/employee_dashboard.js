@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import FeedbackTodoTable from './feedback_todo_table';
+import FeedbackForm from './feedback_form';
 import BASE_URL from '../utilities/base_url';
 
 class EmployeeDashboard extends Component {
@@ -15,6 +16,10 @@ class EmployeeDashboard extends Component {
   }
 
   componentDidMount() {
+    this.fetchFeedbacksPerEmployee();
+  }
+
+  fetchFeedbacksPerEmployee = () => {
     axios.get(`${BASE_URL}/employees/${this.state.employee_id}/feedbacks`)
       .then(response => this.setState({ feedbacks: response.data }))
       .catch(error => console.log(error));
@@ -29,7 +34,7 @@ class EmployeeDashboard extends Component {
     return (
       <div className="container">
         <FeedbackTodoTable feedbacks={feedbacks} selectFeedback={this.selectFeedback} selectedFeedback={selectedFeedback} />
-
+        <FeedbackForm selectedFeedback={selectedFeedback} fetchFeedbacksPerEmployee={this.fetchFeedbacksPerEmployee} />
       </div>
     );
   }

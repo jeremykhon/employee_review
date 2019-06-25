@@ -21,7 +21,7 @@ class Api::V1::FeedbacksController < ApplicationController
   def update
     feedback = Feedback.find_by!(id: params[:id])
     feedback.update!(feedback_params)
-    feedback.completed_at = params[:completed] ? DateTime.now : nil
+    feedback.completed_at = params[:feedback][:completed] ? DateTime.now : nil
     feedback.save!
     render json: feedback
   end
