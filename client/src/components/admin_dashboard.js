@@ -5,7 +5,7 @@ import EmployeeList from './employee_list';
 import EmployeeProfile from './employee_profile';
 import BASE_URL from '../utilities/base_url';
 
-const mql = window.matchMedia('(min-width: 800px)');
+const smallScreenMql = window.matchMedia('(min-width: 800px)');
 
 class AdminDashboard extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class AdminDashboard extends Component {
       employees: [],
       selectedEmployeeId: null || this.props.match.params.employee_id,
       sidebarOpen: false,
-      sidebarDocked: mql.matches,
+      sidebarDocked: smallScreenMql.matches,
     };
   }
 
@@ -26,12 +26,12 @@ class AdminDashboard extends Component {
   }
 
   componentDidMount() {
-    mql.addListener(this.mediaQueryChanged);
+    smallScreenMql.addListener(this.mediaQueryChanged);
     this.fetchEmployees();
   }
 
   componentWillUnmount() {
-    mql.removeListener(this.mediaQueryChanged);
+    smallScreenMql.removeListener(this.mediaQueryChanged);
   }
 
   fetchEmployees = () => {
@@ -51,7 +51,7 @@ class AdminDashboard extends Component {
   }
 
   mediaQueryChanged = () => {
-    this.setState({ sidebarDocked: mql.matches, sidebarOpen: false });
+    this.setState({ sidebarDocked: smallScreenMql.matches, sidebarOpen: false });
   }
 
   onSetSidebarOpen = (open) => {
