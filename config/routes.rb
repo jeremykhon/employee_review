@@ -7,7 +7,7 @@ Rails.application.routes.draw do
         end
       end
       resources :performance_reviews, only: :update do
-        post 'create_many_feedbacks', to: 'feedbacks#create_many'
+        post 'feedbacks/create_many', to: 'feedbacks#create_many'
         get 'feedbacks', to: 'feedbacks#index_by_performance_review'
       end
       resources :feedbacks, only: :update

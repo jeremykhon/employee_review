@@ -3,7 +3,7 @@ class Api::V1::FeedbacksController < ApplicationController
 
   def index
     feedbacks = Feedback.where(employee_id: params[:employee_id])
-    render json: feedbacks
+    render json: feedbacks, include: [performance_review: { include: :employee } ]
   end
 
   def create_many

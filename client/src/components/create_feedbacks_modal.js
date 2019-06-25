@@ -35,7 +35,7 @@ const EmployeeCheckBox = ({ name, value, employee }) => {
 const createFeedbacks = (values, performanceReview, updateFeedbacks, closeModal) => {
   axios({
     method: 'POST',
-    url: `${BASE_URL}/performance_reviews/${performanceReview.id}/create_many_feedbacks`,
+    url: `${BASE_URL}/performance_reviews/${performanceReview.id}/feedbacks/create_many`,
     data: values,
   })
     .then((response) => {
