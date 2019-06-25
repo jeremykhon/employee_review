@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       post 'authenticate', to: 'authentication#authenticate'
+      get 'employees/current_employee', to: 'employees#current_employee'
       resources :feedbacks, only: %i[index update]
       namespace :admin do
         resources :employees do
