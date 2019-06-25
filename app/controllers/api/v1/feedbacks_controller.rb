@@ -15,7 +15,7 @@ class Api::V1::FeedbacksController < ApplicationController
       end
     end
     feedbacks = Feedback.where(performance_review: @performance_review)
-    render json: feedbacks
+    render json: feedbacks, include: [employee: { only: %i[id first_name last_name email] } ]
   end
 
   def update

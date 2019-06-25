@@ -1,5 +1,7 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
+import axios from 'axios';
+import BASE_URL from '../utilities/base_url';
 
 const EmployeeCheckBox = ({ name, value, employee }) => {
   const handleChange = (field, form) => {
@@ -30,18 +32,31 @@ const EmployeeCheckBox = ({ name, value, employee }) => {
   );
 };
 
-const CreateFeedbacksModal = ({ employees }) => (
+const createFeedbacks = (values, performanceReview, updateFeedbacks, closeModal) => {
+  axios({
+    method: 'POST',
+    url: `${BASE_URL}/performance_reviews/${performanceReview.id}/create_many_feedbacks`,
+    data: values,
+  })
+    .then((response) => {
+      updateFeedbacks(response.data);
+      closeModal();
+    })
+    .catch(error => console.log(error));
+};
+
+const CreateFeedbacksModal = ({ employees, performanceReview, updateFeedbacks, closeModal }) => (
   <div>
     <Formik
       initialValues={{
-        employees: [],
+        employee_ids: [],
       }}
-      onSubmit={values => alert(JSON.stringify(values, null, 2))}
+      onSubmit={values => createFeedbacks(values, performanceReview, updateFeedbacks, closeModal)}
     >
       {formik => (
         <div>
           <div>
-            {employees.map(employee => <EmployeeCheckBox key={employee.id} name="employees" value={employee.id} employee={employee} />)}
+            {employees.map(employee => <EmployeeCheckBox key={employee.id} name="employee_ids" value={employee.id} employee={employee} />)}
           </div>
           <button type="button" onClick={formik.submitForm}>submit</button>
         </div>

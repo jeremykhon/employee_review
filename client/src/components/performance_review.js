@@ -36,6 +36,10 @@ class PerformanceReview extends Component {
       .catch(error => console.log(error));
   }
 
+  updateFeedbacks = (feedbacks) => {
+    this.setState({ feedbacks });
+  }
+
   renderFeedbacks = () => {
     const { feedbacks } = this.state;
     if (feedbacks.length > 0) {
@@ -61,7 +65,7 @@ class PerformanceReview extends Component {
           style={modalStyles}
           contentLabel="Example Modal"
         >
-          <CreateFeedbacksModal employees={employees} performanceReview={performanceReview} />
+          <CreateFeedbacksModal closeModal={this.closeModal} employees={employees} performanceReview={performanceReview} updateFeedbacks={this.updateFeedbacks} />
         </Modal>
       </div>
     );
