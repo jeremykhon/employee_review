@@ -4,4 +4,5 @@ class PerformanceReview < ApplicationRecord
   has_many :reviewers, through: :feedbacks, source: :employee
 
   validates :employee, presence: true
+  validates_inclusion_of :final_rating, in: (1..5), allow_blank: true
 end

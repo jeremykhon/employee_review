@@ -2,21 +2,24 @@ class Api::V1::PerformanceReviewsController < ApplicationController
   before_action :set_employee, only: :create
   before_action :set_performance_review, only: :update
 
+  # GET /api/v1/employees/:employee_id/performance_reviews
   def index
     performance_reviews = PerformanceReview.where(employee_id: params[:employee_id])
     render json: performance_reviews
   end
 
+  # POST /api/v1/employees/:employee_id/performance_reviews
   def create
     performance_review = PerformanceReview.new(performance_review_params)
     performance_review.employee = @employee
     performance_review.save!
-    render json: performance_review
+    render json: performance_review, status: :created
   end
 
+  # PATCH/PUT /api/v1/performance_reviews/:id
   def update
     @performance_review.update!(performance_review_params)
-    head :ok
+    render json: @performance_review
   end
 
   private
