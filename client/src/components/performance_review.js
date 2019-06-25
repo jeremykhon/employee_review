@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import FeedbackTable from './feedback_table';
 import BASE_URL from '../utilities/base_url';
 
 class PerformanceReview extends Component {
@@ -25,7 +26,7 @@ class PerformanceReview extends Component {
     const { feedbacks } = this.state;
     if (feedbacks.length > 0) {
       return (
-        feedbacks.map(feedback => <div>{feedback.employee_id}</div>)
+        <FeedbackTable feedbacks={feedbacks} />
       );
     }
     return null;

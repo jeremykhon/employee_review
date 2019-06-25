@@ -28,7 +28,7 @@ class Api::V1::FeedbacksController < ApplicationController
 
   def index_by_performance_review
     feedbacks = Feedback.where(performance_review_id: @performance_review.id)
-    render json: feedbacks
+    render json: feedbacks, include: [employee: { only: %i[id first_name last_name email] } ]
   end
 
   private
