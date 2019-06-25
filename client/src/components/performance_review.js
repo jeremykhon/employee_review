@@ -30,7 +30,7 @@ class PerformanceReview extends Component {
 
   fetchFeedbacksPerPerformanceReview = () => {
     const { performanceReview } = this.props;
-    api.fetchFeedbacksPerPerformanceReview(performanceReview.id)
+    api.adminFetchFeedbacksPerPerformanceReview(performanceReview.id)
       .then(feedbacks => this.setState({ feedbacks }))
       .catch(error => console.log(error));
   }

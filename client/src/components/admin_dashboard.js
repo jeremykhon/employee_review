@@ -34,7 +34,7 @@ class AdminDashboard extends Component {
   }
 
   fetchEmployees = () => {
-    api.fetchEmployees()
+    api.adminFetchEmployees()
       .then(employees => this.setState({ employees }))
       .catch(error => console.log(error));
   }

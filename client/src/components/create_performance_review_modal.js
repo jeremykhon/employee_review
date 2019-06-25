@@ -11,7 +11,7 @@ const PerformanceReviewSchema = Yup.object().shape({
 
 const CreatePerformanceReviewModal = ({ employee, closeModal, fetchEmployee }) => {
   const createPerformanceReview = (performanceReviewData) => {
-    api.createPerformanceReview(employee.id, performanceReviewData)
+    api.adminCreatePerformanceReview(employee.id, performanceReviewData)
       .then(() => {
         fetchEmployee(employee.id);
         closeModal();

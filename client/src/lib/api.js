@@ -39,7 +39,7 @@ export const fetchCurrentEmployee = () => (
     .then(response => response.data)
 );
 
-export const fetchEmployee = employeeId => (
+export const adminFetchEmployee = employeeId => (
   axios({
     ...getDefaultAxiosConfig(),
     method: 'GET',
@@ -48,7 +48,7 @@ export const fetchEmployee = employeeId => (
     .then(response => response.data)
 );
 
-export const fetchEmployees = () => (
+export const adminFetchEmployees = () => (
   axios({
     ...getDefaultAxiosConfig(),
     method: 'GET',
@@ -57,7 +57,7 @@ export const fetchEmployees = () => (
     .then(response => response.data)
 );
 
-export const createEmployee = employeeData => (
+export const adminCreateEmployee = employeeData => (
   axios({
     ...getDefaultAxiosConfig(),
     method: 'POST',
@@ -69,7 +69,7 @@ export const createEmployee = employeeData => (
     .then(response => response.data)
 );
 
-export const deleteEmployee = employeeId => (
+export const adminDeleteEmployee = employeeId => (
   axios({
     ...getDefaultAxiosConfig(),
     method: 'DELETE',
@@ -77,7 +77,7 @@ export const deleteEmployee = employeeId => (
   })
 );
 
-export const fetchFeedbacksPerPerformanceReview = performanceReviewId => (
+export const adminFetchFeedbacksPerPerformanceReview = performanceReviewId => (
   axios({
     ...getDefaultAxiosConfig(),
     method: 'GET',
@@ -86,7 +86,7 @@ export const fetchFeedbacksPerPerformanceReview = performanceReviewId => (
     .then(response => response.data)
 );
 
-export const createPerformanceReview = (employeeId, performanceReviewData) => (
+export const adminCreatePerformanceReview = (employeeId, performanceReviewData) => (
   axios({
     ...getDefaultAxiosConfig(),
     method: 'POST',
@@ -107,7 +107,7 @@ export const fetchFeedbacks = () => (
     .then(response => response.data)
 );
 
-export const updateEmployee = (employeeId, employeeData) => (
+export const adminUpdateEmployee = (employeeId, employeeData) => (
   axios({
     ...getDefaultAxiosConfig(),
     method: 'PATCH',
@@ -119,7 +119,7 @@ export const updateEmployee = (employeeId, employeeData) => (
     .then(response => response.data)
 );
 
-export const createFeedbacksPerPerformanceReview = (performanceReviewId, feedbacksData) => (
+export const adminCreateFeedbacksPerPerformanceReview = (performanceReviewId, feedbacksData) => (
   axios({
     ...getDefaultAxiosConfig(),
     method: 'POST',

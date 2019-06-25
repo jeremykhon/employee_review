@@ -19,7 +19,7 @@ const EmployeeSchema = Yup.object().shape({
 
 const UpdateEmployeeModal = ({ employee: { id, first_name, last_name, email }, closeModal, fetchEmployee }) => {
   const updateEmployee = (values) => {
-    api.updateEmployee(id, values)
+    api.adminUpdateEmployee(id, values)
       .then(() => {
         fetchEmployee(id);
         closeModal();

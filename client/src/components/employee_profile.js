@@ -23,7 +23,7 @@ class EmployeeProfile extends Component {
 
   fetchEmployee = (employeeId) => {
     if (employeeId) {
-      api.fetchEmployee(employeeId)
+      api.adminFetchEmployee(employeeId)
         .then(employee => this.setState({ employee }))
         .catch(error => console.log(error));
     }

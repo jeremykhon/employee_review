@@ -33,7 +33,7 @@ const EmployeeCheckBox = ({ name, value, employee }) => {
 
 const CreateFeedbacksModal = ({ employees, performanceReview, onFeedbacksCreated, closeModal }) => {
   const createFeedbacks = (feedbacksData) => {
-    api.createFeedbacksPerPerformanceReview(performanceReview.id, feedbacksData)
+    api.adminCreateFeedbacksPerPerformanceReview(performanceReview.id, feedbacksData)
       .then((feedbacks) => {
         onFeedbacksCreated(feedbacks);
         closeModal();

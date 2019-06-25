@@ -3,7 +3,7 @@ import * as api from '../lib/api';
 
 const DeleteEmployeeModal = ({ employee, fetchEmployees, clearEmployee, closeModal }) => {
   const deleteEmployee = () => {
-    api.deleteEmployee(employee.id)
+    api.adminDeleteEmployee(employee.id)
       .then(() => {
         fetchEmployees();
         clearEmployee();

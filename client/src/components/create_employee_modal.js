@@ -22,7 +22,7 @@ const EmployeeSchema = Yup.object().shape({
 
 const CreateEmployeeModal = ({ onEmployeeCreated, closeModal }) => {
   const createEmployee = (employeeData) => {
-    api.createEmployee(employeeData)
+    api.adminCreateEmployee(employeeData)
       .then((employee) => {
         history.push(`/admin/employees/${employee.id}`);
         onEmployeeCreated(employee);
