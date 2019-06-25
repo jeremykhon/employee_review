@@ -1,22 +1,45 @@
 import React, { Component } from 'react';
+import Modal from 'react-modal';
 import PerformanceReview from './performance_review';
+import CreatePerformanceReviewModal from './create_performance_review_modal';
+import modalStyles from '../utilities/modal_styles';
 
 class PerformanceReviewsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      something: null,
+      modalIsOpen: false,
     };
   }
 
+  openModal = () => {
+    this.setState({ modalIsOpen: true });
+  }
+
+  closeModal = () => {
+    this.setState({ modalIsOpen: false });
+  }
+
   render() {
-    const { performanceReviews } = this.props;
+    const { performanceReviews, employee, fetchEmployee } = this.props;
     if (performanceReviews) {
       return (
         <div className="performance-reviews-container">
-          {performanceReviews.map(performanceReview => (
-            <PerformanceReview key={performanceReview.id} performanceReview={performanceReview} />
-          ))}
+          <div className="performance-review-list">
+            {performanceReviews.map(performanceReview => (
+              <PerformanceReview key={performanceReview.id} performanceReview={performanceReview} />
+            ))}
+          </div>
+          <hr />
+          <button className="white-btn" type="button" onClick={this.openModal}>New performance review</button>
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onRequestClose={this.closeModal}
+            style={modalStyles}
+            contentLabel="Example Modal"
+          >
+            <CreatePerformanceReviewModal fetchEmployee={fetchEmployee} employee={employee} closeModal={this.closeModal} />
+          </Modal>
         </div>
       );
     }

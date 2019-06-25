@@ -32,10 +32,6 @@ class EmployeeProfile extends Component {
     this.setState({ employee: null });
   }
 
-  // appendEmployee = (employee) => {
-  //   this.setState({ employee });
-  // }
-
   render() {
     const { employee } = this.state;
     const { fetchEmployees } = this.props;
@@ -45,7 +41,7 @@ class EmployeeProfile extends Component {
           <div className="section-titles">Employee Information</div>
           <EmployeeInfoCard employee={employee} fetchEmployee={this.fetchEmployee} fetchEmployees={fetchEmployees} clearEmployee={this.clearEmployee} />
           <div className="section-titles">Performance Reviews</div>
-          <PerformanceReviewsContainer performanceReviews={employee.performance_reviews} />
+          <PerformanceReviewsContainer fetchEmployee={this.fetchEmployee} employee={employee} performanceReviews={employee.performance_reviews} />
         </div>
       );
     }
