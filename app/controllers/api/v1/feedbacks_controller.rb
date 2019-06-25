@@ -3,19 +3,19 @@ class Api::V1::FeedbacksController < ApplicationController
 
   def index
     feedbacks = Feedback.where(employee_id: params[:employee_id])
-    render json: feedbacks, include: [performance_review: { include: :employee } ]
+    render json: feedbacks, include: [performance_review: { include: { employee: { only: %i[id first_name last_name email] } } }]
   end
 
   def create_many
+    created = []
     employee_ids = params[:employee_ids].to_a
-    employee_ids.each do |employee_id|
-      employee = Employee.find_by(id: employee_id)
-      unless employee.nil?
-        Feedback.create(employee: employee, performance_review: @performance_review)
+    ActiveRecord::Base.transaction do
+      employee_ids.each do |employee_id|
+        employee = Employee.find_by!(id: employee_id)
+        created << Feedback.create!(employee: employee, performance_review: @performance_review)
       end
     end
-    feedbacks = Feedback.where(performance_review: @performance_review)
-    render json: feedbacks, include: [employee: { only: %i[id first_name last_name email] } ]
+    render json: created, include: [employee: { only: %i[id first_name last_name email] } ]
   end
 
   def update

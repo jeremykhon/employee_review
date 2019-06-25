@@ -36,12 +36,14 @@ class PerformanceReview extends Component {
       .catch(error => console.log(error));
   }
 
-  handleFeedbacksUpdated = (feedbacks) => {
-    this.updateFeedbacks(feedbacks);
+  handleFeedbacksCreated = (feedbacks) => {
+    this.appendFeedbacks(feedbacks);
   }
 
-  updateFeedbacks = (feedbacks) => {
-    this.setState({ feedbacks });
+  appendFeedbacks = (feedbacks) => {
+    this.setState(state => (
+      { feedbacks: [...state.feedbacks, ...feedbacks] }
+    ));
   }
 
   renderFeedbacks = () => {
@@ -69,7 +71,7 @@ class PerformanceReview extends Component {
           style={modalStyles}
           contentLabel="Example Modal"
         >
-          <CreateFeedbacksModal closeModal={this.closeModal} employees={employees} performanceReview={performanceReview} onFeedbacksUpdated={this.handleFeedbacksUpdated} />
+          <CreateFeedbacksModal closeModal={this.closeModal} employees={employees} performanceReview={performanceReview} onFeedbacksCreated={this.handleFeedbacksCreated} />
         </Modal>
       </div>
     );
