@@ -21,7 +21,7 @@ const EmployeeSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const createEmployee = (values, appendEmployee, closeModal) => {
+const createEmployee = (values, onEmployeeCreated, closeModal) => {
   axios({
     method: 'POST',
     url: `${BASE_URL}/employees`,
@@ -31,13 +31,13 @@ const createEmployee = (values, appendEmployee, closeModal) => {
   })
     .then((response) => {
       history.push(`/admin/employees/${response.data.id}`);
-      appendEmployee(response.data);
+      onEmployeeCreated(response.data);
       closeModal();
     })
     .catch(error => console.log(error));
 };
 
-const CreateEmployeeModal = ({ appendEmployee, closeModal }) => {
+const CreateEmployeeModal = ({ onEmployeeCreated, closeModal }) => {
   return (
     <div>
       <Formik
@@ -49,7 +49,7 @@ const CreateEmployeeModal = ({ appendEmployee, closeModal }) => {
         }}
         validationSchema={EmployeeSchema}
         onSubmit={(values) => {
-          createEmployee(values, appendEmployee, closeModal);
+          createEmployee(values, onEmployeeCreated, closeModal);
         }}
       >
         {({ errors, touched }) => (

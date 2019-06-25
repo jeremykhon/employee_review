@@ -23,7 +23,7 @@ class EmployeeList extends Component {
   }
 
   render() {
-    const { employees, selectEmployee, selectedEmployeeId, appendEmployee } = this.props;
+    const { employees, selectEmployee, selectedEmployeeId, onEmployeeCreated } = this.props;
     return (
       <div className="employee-list">
         <div className="employee-list-top-container">
@@ -44,7 +44,7 @@ class EmployeeList extends Component {
           style={modalStyles}
           contentLabel="Example Modal"
         >
-          <CreateEmployeeModal appendEmployee={appendEmployee} closeModal={this.closeModal} />
+          <CreateEmployeeModal onEmployeeCreated={onEmployeeCreated} closeModal={this.closeModal} />
         </Modal>
       </div>
     );

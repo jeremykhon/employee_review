@@ -32,26 +32,26 @@ const EmployeeCheckBox = ({ name, value, employee }) => {
   );
 };
 
-const createFeedbacks = (values, performanceReview, updateFeedbacks, closeModal) => {
+const createFeedbacks = (values, performanceReview, onFeedbacksUpdated, closeModal) => {
   axios({
     method: 'POST',
     url: `${BASE_URL}/performance_reviews/${performanceReview.id}/feedbacks/create_many`,
     data: values,
   })
     .then((response) => {
-      updateFeedbacks(response.data);
+      onFeedbacksUpdated(response.data);
       closeModal();
     })
     .catch(error => console.log(error));
 };
 
-const CreateFeedbacksModal = ({ employees, performanceReview, updateFeedbacks, closeModal }) => (
+const CreateFeedbacksModal = ({ employees, performanceReview, onFeedbacksUpdated, closeModal }) => (
   <div>
     <Formik
       initialValues={{
         employee_ids: [],
       }}
-      onSubmit={values => createFeedbacks(values, performanceReview, updateFeedbacks, closeModal)}
+      onSubmit={values => createFeedbacks(values, performanceReview, onFeedbacksUpdated, closeModal)}
     >
       {formik => (
         <div>

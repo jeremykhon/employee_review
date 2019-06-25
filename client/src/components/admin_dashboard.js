@@ -40,6 +40,10 @@ class AdminDashboard extends Component {
       .catch(error => console.log(error));
   }
 
+  handleEmployeeCreated = (employee) => {
+    this.appendEmployee(employee);
+  }
+
   appendEmployee = (employee) => {
     this.setState(state => (
       { employees: [...state.employees, employee] }
@@ -64,7 +68,7 @@ class AdminDashboard extends Component {
               employees={employees}
               selectEmployee={this.selectEmployee}
               selectedEmployeeId={selectedEmployeeId}
-              appendEmployee={this.appendEmployee}
+              onEmployeeCreated={this.handleEmployeeCreated}
             />
           )}
           open={sidebarOpen}
