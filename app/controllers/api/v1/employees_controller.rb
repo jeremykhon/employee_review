@@ -17,12 +17,12 @@ class Api::V1::EmployeesController < ApplicationController
 
   def destroy
     @employee.destroy!
-    head :ok
+    head :no_content
   end
 
   def update
     @employee.update!(employee_params)
-    head :ok
+    render json: @employee, only: %i[id first_name last_name email]
   end
 
   private
