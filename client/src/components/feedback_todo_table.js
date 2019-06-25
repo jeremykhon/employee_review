@@ -14,19 +14,21 @@ const FeedbackTodoRow = ({ feedback, selectFeedback, selectedFeedback }) => {
 };
 
 const FeedbackTodoTable = ({ feedbacks, selectFeedback, selectedFeedback }) => (
-  <table className="feedback-table">
-    <tbody>
-      <tr>
-        <th>ID</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Comment</th>
-        <th>Rating</th>
-        <th>Completed</th>
-      </tr>
-      {feedbacks.map(feedback => <FeedbackTodoRow key={feedback.id} feedback={feedback} selectedFeedback={selectedFeedback} selectFeedback={selectFeedback} />)}
-    </tbody>
-  </table>
+  <div className="section-container feedback-todo-table-container">
+    <table className="feedback-table">
+      <tbody>
+        <tr>
+          <th>ID</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Comment</th>
+          <th>Rating</th>
+          <th>Completed</th>
+        </tr>
+        {feedbacks.map(feedback => <FeedbackTodoRow key={feedback.id} feedback={feedback} selectedFeedback={selectedFeedback} selectFeedback={selectFeedback} />)}
+      </tbody>
+    </table>
+  </div>
 );
 
 export default FeedbackTodoTable;

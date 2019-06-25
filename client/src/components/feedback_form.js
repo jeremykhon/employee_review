@@ -56,7 +56,7 @@ const FeedbackForm = ({ selectedFeedback, fetchFeedbacksPerEmployee }) => {
     const { comment, rating, id, completed_at } = selectedFeedback;
     let completed = completed_at;
     return (
-      <div>
+      <div className="section-container">
         <Formik
           enableReinitialize
           initialValues={{
@@ -90,7 +90,6 @@ const FeedbackForm = ({ selectedFeedback, fetchFeedbacksPerEmployee }) => {
     );
   }
   return null;
-}
-  
+};
 
 export default FeedbackForm;
