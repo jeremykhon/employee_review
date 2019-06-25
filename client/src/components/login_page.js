@@ -1,21 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import LoginForm from './login_form';
 
-class LoginPage extends Component {
-  constructor() {
-    super()
-    this.state = {
-      email: '',
-      password: '',
-    };
-  }
-
-  render() {
-    return (
-      <div>
-        LoginPage
-      </div>
-    );
-  }
-}
+const LoginPage = () => (
+  <div className="container">
+    <LoginForm />
+  </div>
+);
 
 export default LoginPage;
