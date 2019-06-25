@@ -21,7 +21,7 @@ const EmployeeSchema = Yup.object().shape({
 const updateEmployee = (values, id, closeModal, fetchEmployee) => {
   axios({
     method: 'PATCH',
-    url: `${BASE_URL}/employees/${id}`,
+    url: `${BASE_URL}/admin/employees/${id}`,
     data: {
       employee: values,
     },

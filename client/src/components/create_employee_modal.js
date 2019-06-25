@@ -24,7 +24,7 @@ const EmployeeSchema = Yup.object().shape({
 const createEmployee = (values, onEmployeeCreated, closeModal) => {
   axios({
     method: 'POST',
-    url: `${BASE_URL}/employees`,
+    url: `${BASE_URL}/admin/employees`,
     data: {
       employee: values,
     },

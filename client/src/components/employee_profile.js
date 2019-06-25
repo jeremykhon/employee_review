@@ -24,7 +24,7 @@ class EmployeeProfile extends Component {
 
   fetchEmployee = (employeeId) => {
     if (employeeId) {
-      axios.get(`${BASE_URL}/employees/${employeeId}`)
+      axios.get(`${BASE_URL}/admin/employees/${employeeId}`)
         .then(response => this.setState({ employee: response.data }))
         .catch(error => console.log(error));
     }

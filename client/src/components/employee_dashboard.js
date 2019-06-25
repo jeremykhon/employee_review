@@ -20,7 +20,7 @@ class EmployeeDashboard extends Component {
   }
 
   fetchFeedbacksPerEmployee = () => {
-    axios.get(`${BASE_URL}/employees/${this.state.employee_id}/feedbacks`)
+    axios.get(`${BASE_URL}/admin/employees/${this.state.employee_id}/feedbacks`)
       .then(response => this.setState({ feedbacks: response.data }))
       .catch(error => console.log(error));
   }

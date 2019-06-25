@@ -4,10 +4,10 @@ RSpec.describe "PerformanceReviews", type: :request do
   # Set up initial data to be shared across tests
   let!(:performance_reviews) { create_list(:performance_review, 3) }
 
-  describe "PUT /api/v1/performance_reviews/:id" do
+  describe "PUT /api/v1/admin/performance_reviews/:id" do
     let(:performance_review) { performance_reviews.first }
     let(:new_performance_review_attrs) { attributes_for(:performance_review).slice(:employee_id, :final_comment, :final_rating) }
-    let(:uri) { "/api/v1/performance_reviews/#{performance_review.id}" }
+    let(:uri) { "/api/v1/admin/performance_reviews/#{performance_review.id}" }
 
     it "returns http success status" do
       put uri, params: { performance_review: new_performance_review_attrs }
