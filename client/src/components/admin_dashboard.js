@@ -35,7 +35,7 @@ class AdminDashboard extends Component {
   }
 
   fetchEmployees = () => {
-    axios.get(`${BASE_URL}/employees`)
+    axios.get(`${BASE_URL}/admin/employees`)
       .then(response => this.setState({ employees: response.data }))
       .catch(error => console.log(error));
   }

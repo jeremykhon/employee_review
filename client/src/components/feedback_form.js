@@ -17,7 +17,7 @@ const FeedbackSchema = Yup.object().shape({
 const updateFeedback = (values, id, fetchFeedbacksPerEmployee) => {
   axios({
     method: 'PATCH',
-    url: `${BASE_URL}/feedbacks/${id}`,
+    url: `${BASE_URL}/admin/feedbacks/${id}`,
     data: {
       feedback: values,
     },

@@ -31,7 +31,7 @@ class PerformanceReview extends Component {
 
   fetchFeedbacksPerPerformanceReview = () => {
     const { performanceReview } = this.props;
-    axios.get(`${BASE_URL}/performance_reviews/${performanceReview.id}/feedbacks`)
+    axios.get(`${BASE_URL}/admin/performance_reviews/${performanceReview.id}/feedbacks`)
       .then(response => this.setState({ feedbacks: response.data }))
       .catch(error => console.log(error));
   }

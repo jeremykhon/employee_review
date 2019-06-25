@@ -1,9 +1,9 @@
 import React from 'react';
 import LoginForm from './login_form';
 
-const LoginPage = () => (
+const LoginPage = ({ onLoginSuccess }) => (
   <div className="container">
-    <LoginForm />
+    <LoginForm onLoginSuccess={onLoginSuccess} />
   </div>
 );
 

@@ -4,8 +4,8 @@ RSpec.describe "Employees", type: :request do
   # Set up initial data to be shared across tests
   let!(:employees) { create_list(:employee, 3) }
 
-  describe "GET /api/v1/employees" do
-    let(:uri) { "/api/v1/employees" }
+  describe "GET /api/v1/admin/employees" do
+    let(:uri) { "/api/v1/admin/employees" }
 
     it "renders http success status" do
       get uri
@@ -29,9 +29,9 @@ RSpec.describe "Employees", type: :request do
     end
   end
 
-  describe "GET /api/v1/employees/:id" do
+  describe "GET /api/v1/admin/employees/:id" do
     let(:employee) { employees.first }
-    let(:uri) { "/api/v1/employees/#{employee.id}" }
+    let(:uri) { "/api/v1/admin/employees/#{employee.id}" }
 
     it "renders http success status" do
       get uri
@@ -52,7 +52,7 @@ RSpec.describe "Employees", type: :request do
     end
 
     context "when missing employee" do
-      let(:missing_uri) { "/api/v1/employees/-1" }
+      let(:missing_uri) { "/api/v1/admin/employees/-1" }
 
       it "raises an RecordNotFound error" do
         expect {
@@ -62,9 +62,9 @@ RSpec.describe "Employees", type: :request do
     end
   end
 
-  describe "POST /api/v1/employees" do
+  describe "POST /api/v1/admin/employees" do
     let(:employee_attrs) { attributes_for(:employee).slice(:first_name, :last_name, :email, :password) }
-    let(:uri) { "/api/v1/employees" }
+    let(:uri) { "/api/v1/admin/employees" }
 
     it "returns http created status" do
       post uri, params: { employee: employee_attrs }
@@ -88,10 +88,10 @@ RSpec.describe "Employees", type: :request do
     end
   end
 
-  describe "PUT /api/v1/employees/:id" do
+  describe "PUT /api/v1/admin/employees/:id" do
     let(:employee) { employees.first }
     let(:new_employee_attrs) { attributes_for(:employee).slice(:first_name, :last_name, :email, :password) }
-    let(:uri) { "/api/v1/employees/#{employee.id}" }
+    let(:uri) { "/api/v1/admin/employees/#{employee.id}" }
 
     it "returns http success status" do
       put uri, params: { employee: new_employee_attrs }
@@ -115,9 +115,9 @@ RSpec.describe "Employees", type: :request do
     end
   end
 
-  describe "DELETE /api/v1/employees/:id" do
+  describe "DELETE /api/v1/admin/employees/:id" do
     let(:employee) { employees.first }
-    let(:uri) { "/api/v1/employees/#{employee.id}" }
+    let(:uri) { "/api/v1/admin/employees/#{employee.id}" }
 
     it "returns http no_content status" do
       delete uri
@@ -131,7 +131,7 @@ RSpec.describe "Employees", type: :request do
     end
 
     context "when missing employee" do
-      let(:missing_uri) { "/api/v1/employees/-1" }
+      let(:missing_uri) { "/api/v1/admin/employees/-1" }
 
       it "raises an RecordNotFound error" do
         expect {

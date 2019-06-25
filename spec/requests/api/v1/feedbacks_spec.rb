@@ -4,10 +4,10 @@ RSpec.describe "Feedbacks", type: :request do
   # Set up initial data to be shared across tests
   let!(:feedbacks) { create_list(:feedback, 3) }
 
-  describe "PUT /api/v1/feedbacks/:id" do
+  describe "PUT /api/v1/admin/feedbacks/:id" do
     let(:feedback) { feedbacks.first }
     let(:new_feedback_attrs) { attributes_for(:feedback).slice(:comment, :rating) }
-    let(:uri) { "/api/v1/feedbacks/#{feedback.id}" }
+    let(:uri) { "/api/v1/admin/feedbacks/#{feedback.id}" }
 
     it "returns http success status" do
       put uri, params: { feedback: new_feedback_attrs }

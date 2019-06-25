@@ -13,7 +13,7 @@ const PerformanceReviewSchema = Yup.object().shape({
 const createPerformanceReview = (values, employee, closeModal, fetchEmployee) => {
   axios({
     method: 'POST',
-    url: `${BASE_URL}/employees/${employee.id}/performance_reviews`,
+    url: `${BASE_URL}/admin/employees/${employee.id}/performance_reviews`,
     data: {
       performance_review: values,
     },
