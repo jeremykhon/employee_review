@@ -2,22 +2,9 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import UpdateEmployeeModal from './update_employee_modal';
 import DeleteEmployeeModal from './delete_employee_modal';
+import modalStyles from '../utilities/modal_styles';
 
 Modal.setAppElement('#root');
-
-const customStyles = {
-  overlay: {
-    zIndex: '2',
-  },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
 
 class EmployeeInfoCard extends Component {
   constructor(props) {
@@ -81,7 +68,7 @@ class EmployeeInfoCard extends Component {
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
-          style={customStyles}
+          style={modalStyles}
           contentLabel="Example Modal"
         >
           {this.modalContent()}

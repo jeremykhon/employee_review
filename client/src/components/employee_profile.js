@@ -32,6 +32,10 @@ class EmployeeProfile extends Component {
     this.setState({ employee: null });
   }
 
+  // appendEmployee = (employee) => {
+  //   this.setState({ employee });
+  // }
+
   render() {
     const { employee } = this.state;
     const { fetchEmployees } = this.props;

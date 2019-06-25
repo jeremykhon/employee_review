@@ -40,6 +40,12 @@ class AdminDashboard extends Component {
       .catch(error => console.log(error));
   }
 
+  appendEmployee = (employee) => {
+    this.setState(state => (
+      { employees: [...state.employees, employee] }
+    ));
+  }
+
   mediaQueryChanged = () => {
     this.setState({ sidebarDocked: mql.matches, sidebarOpen: false });
   }
@@ -58,6 +64,7 @@ class AdminDashboard extends Component {
               employees={employees}
               selectEmployee={this.selectEmployee}
               selectedEmployeeId={selectedEmployeeId}
+              appendEmployee={this.appendEmployee}
             />
           )}
           open={sidebarOpen}
