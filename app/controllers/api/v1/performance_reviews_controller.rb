@@ -11,12 +11,12 @@ class Api::V1::PerformanceReviewsController < ApplicationController
     performance_review = PerformanceReview.new(performance_review_params)
     performance_review.employee = @employee
     performance_review.save!
-    render json: performance_review
+    render json: performance_review, status: :created
   end
 
   def update
     @performance_review.update!(performance_review_params)
-    head :ok
+    render json: performance_review
   end
 
   private

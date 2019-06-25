@@ -20,7 +20,7 @@ class Api::V1::FeedbacksController < ApplicationController
         created << Feedback.create!(employee: employee, performance_review: @performance_review)
       end
     end
-    render json: created, include: [employee: { only: %i[id first_name last_name email] } ]
+    render json: created, include: [employee: { only: %i[id first_name last_name email] }], status: :created
   end
 
   def update
