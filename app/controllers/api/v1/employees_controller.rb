@@ -15,7 +15,7 @@ class Api::V1::EmployeesController < ApplicationController
   # POST /api/v1/employees
   def create
     employee = Employee.create!(employee_params)
-    render json: employee, only: %i[id first_name last_name email]
+    render json: employee, only: %i[id first_name last_name email], status: :created
   end
 
   # DELETE /api/v1/employees/:id

@@ -19,7 +19,7 @@ class Api::V1::PerformanceReviewsController < ApplicationController
   # PATCH/PUT /api/v1/performance_reviews/:id
   def update
     @performance_review.update!(performance_review_params)
-    render json: performance_review
+    render json: @performance_review
   end
 
   private
