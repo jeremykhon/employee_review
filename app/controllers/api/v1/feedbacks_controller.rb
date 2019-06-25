@@ -6,6 +6,11 @@ class Api::V1::FeedbacksController < ApplicationController
     render json: feedbacks, include: [performance_review: { include: { employee: { only: %i[id first_name last_name email] } } }]
   end
 
+  def index_by_performance_review
+    feedbacks = Feedback.where(performance_review_id: @performance_review.id)
+    render json: feedbacks, include: [employee: { only: %i[id first_name last_name email] }]
+  end
+
   def create_many
     created = []
     employee_ids = params[:employee_ids].to_a
@@ -24,11 +29,6 @@ class Api::V1::FeedbacksController < ApplicationController
     feedback.completed_at = params[:feedback][:completed] ? DateTime.now : nil
     feedback.save!
     render json: feedback
-  end
-
-  def index_by_performance_review
-    feedbacks = Feedback.where(performance_review_id: @performance_review.id)
-    render json: feedbacks, include: [employee: { only: %i[id first_name last_name email] } ]
   end
 
   private
