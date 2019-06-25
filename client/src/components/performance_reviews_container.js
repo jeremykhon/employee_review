@@ -21,13 +21,13 @@ class PerformanceReviewsContainer extends Component {
   }
 
   render() {
-    const { performanceReviews, employee, fetchEmployee } = this.props;
+    const { performanceReviews, employee, fetchEmployee, employees } = this.props;
     if (performanceReviews) {
       return (
         <div className="performance-reviews-container">
           <div className="performance-review-list">
             {performanceReviews.map(performanceReview => (
-              <PerformanceReview key={performanceReview.id} performanceReview={performanceReview} />
+              <PerformanceReview key={performanceReview.id} performanceReview={performanceReview} employees={employees} />
             ))}
           </div>
           <hr />

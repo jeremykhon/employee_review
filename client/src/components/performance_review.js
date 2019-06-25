@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Modal from 'react-modal';
 import FeedbackTable from './feedback_table';
+import CreateFeedbacksModal from './create_feedbacks_modal';
 import BASE_URL from '../utilities/base_url';
+import modalStyles from '../utilities/modal_styles';
+
+Modal.setAppElement('#root');
 
 class PerformanceReview extends Component {
   constructor(props) {
     super(props);
     this.state = {
       feedbacks: [],
+      modalIsOpen: false,
     };
   }
 
   componentDidMount() {
     this.fetchFeedbacksPerPerformanceReview();
+  }
+
+  openModal = () => {
+    this.setState({ modalIsOpen: true });
+  }
+
+  closeModal = () => {
+    this.setState({ modalIsOpen: false });
   }
 
   fetchFeedbacksPerPerformanceReview = () => {
@@ -33,14 +47,22 @@ class PerformanceReview extends Component {
   }
 
   render() {
-    const { performanceReview } = this.props;
+    const { performanceReview, employees } = this.props;
     return (
       <div className="performance-review">
-        <div>{performanceReview.title}</div>
+        <div className="performance-review-title">{performanceReview.title}</div>
         <div>
           {this.renderFeedbacks()}
         </div>
-        
+        <button className="white-btn" type="button" onClick={this.openModal}>Add reviewers</button>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+          style={modalStyles}
+          contentLabel="Example Modal"
+        >
+          <CreateFeedbacksModal employees={employees} performanceReview={performanceReview} />
+        </Modal>
       </div>
     );
   }

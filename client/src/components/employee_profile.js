@@ -23,9 +23,11 @@ class EmployeeProfile extends Component {
   }
 
   fetchEmployee = (employeeId) => {
-    axios.get(`${BASE_URL}/employees/${employeeId}`)
-      .then(response => this.setState({ employee: response.data }))
-      .catch(error => console.log(error));
+    if (employeeId) {
+      axios.get(`${BASE_URL}/employees/${employeeId}`)
+        .then(response => this.setState({ employee: response.data }))
+        .catch(error => console.log(error));
+    }
   }
 
   clearEmployee = () => {
@@ -34,14 +36,14 @@ class EmployeeProfile extends Component {
 
   render() {
     const { employee } = this.state;
-    const { fetchEmployees } = this.props;
+    const { fetchEmployees, employees } = this.props;
     if (employee) {
       return (
         <div className="employee-profile">
           <div className="section-titles">Employee Information</div>
           <EmployeeInfoCard employee={employee} fetchEmployee={this.fetchEmployee} fetchEmployees={fetchEmployees} clearEmployee={this.clearEmployee} />
           <div className="section-titles">Performance Reviews</div>
-          <PerformanceReviewsContainer fetchEmployee={this.fetchEmployee} employee={employee} performanceReviews={employee.performance_reviews} />
+          <PerformanceReviewsContainer employees={employees} fetchEmployee={this.fetchEmployee} employee={employee} performanceReviews={employee.performance_reviews} />
         </div>
       );
     }

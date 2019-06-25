@@ -71,7 +71,7 @@ class AdminDashboard extends Component {
           docked={sidebarDocked}
           onSetOpen={this.onSetSidebarOpen}
         >
-          <EmployeeProfile selectedEmployeeId={selectedEmployeeId} fetchEmployees={this.fetchEmployees} />
+          <EmployeeProfile selectedEmployeeId={selectedEmployeeId} fetchEmployees={this.fetchEmployees} employees={employees} />
         </Sidebar>
       </div>
     );

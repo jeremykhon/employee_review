@@ -16,15 +16,17 @@ const FeedbackRow = ({ feedback }) => {
 const FeedbackTable = ({ feedbacks }) => {
   return (
     <table className="feedback-table">
-      <tr>
-        <th>ID</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Comment</th>
-        <th>Rating</th>
-        <th>Completed</th>
-      </tr>
-      {feedbacks.map(feedback => <FeedbackRow feedback={feedback} />)}
+      <tbody>
+        <tr>
+          <th>ID</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Comment</th>
+          <th>Rating</th>
+          <th>Completed</th>
+        </tr>
+        {feedbacks.map(feedback => <FeedbackRow key={feedback.id} feedback={feedback} />)}
+      </tbody>
     </table>
   );
 };
