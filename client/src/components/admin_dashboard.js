@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Sidebar from 'react-sidebar';
 import EmployeeList from './employee_list';
 import EmployeeProfile from './employee_profile';
-import BASE_URL from '../lib/base_url';
+import * as api from '../lib/api';
 
 const smallScreenMql = window.matchMedia('(min-width: 800px)');
 
@@ -35,8 +34,8 @@ class AdminDashboard extends Component {
   }
 
   fetchEmployees = () => {
-    axios.get(`${BASE_URL}/admin/employees`)
-      .then(response => this.setState({ employees: response.data }))
+    api.fetchEmployees()
+      .then(employees => this.setState({ employees }))
       .catch(error => console.log(error));
   }
 

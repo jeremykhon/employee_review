@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
-import axios from 'axios';
-import BASE_URL from '../lib/base_url';
 import history from '../lib/history';
+import getAuthToken from '../lib/get_auth_token';
 import Navbar from './navbar';
 import LoginPage from './login_page';
 import AdminDashboard from './admin_dashboard';
 import EmployeeDashboard from './employee_dashboard';
 import PrivateRoute from './private_route';
+import * as api from '../lib/api';
 
 const getDashboardPath = (employee) => {
   if (employee.is_admin) {
     return '/admin';
   }
   return '/employee';
-};
-
-const getAuthToken = () => {
-  return localStorage.getItem('Authorization');
 };
 
 class App extends Component {
@@ -41,15 +37,8 @@ class App extends Component {
   loadEmployee = () => {
     const { authToken } = this.state;
 
-    axios.get(
-      `${BASE_URL}/employees/current_employee`, {
-        headers: {
-          Authorization: authToken,
-        },
-      },
-    )
-      .then((response) => {
-        const employee = response.data;
+    api.fetchCurrentEmployee()
+      .then(employee => {
         this.setState({ employee });
       })
       .catch(error => console.log(error))

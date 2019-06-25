@@ -1,7 +1,6 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
-import axios from 'axios';
-import BASE_URL from '../lib/base_url';
+import * as api from '../lib/api';
 
 const EmployeeCheckBox = ({ name, value, employee }) => {
   const handleChange = (field, form) => {
@@ -32,37 +31,35 @@ const EmployeeCheckBox = ({ name, value, employee }) => {
   );
 };
 
-const createFeedbacks = (values, performanceReview, onFeedbacksCreated, closeModal) => {
-  axios({
-    method: 'POST',
-    url: `${BASE_URL}/admin/performance_reviews/${performanceReview.id}/feedbacks/create_many`,
-    data: values,
-  })
-    .then((response) => {
-      onFeedbacksCreated(response.data);
-      closeModal();
-    })
-    .catch(error => console.log(error));
-};
+const CreateFeedbacksModal = ({ employees, performanceReview, onFeedbacksCreated, closeModal }) => {
+  const createFeedbacks = (feedbacksData) => {
+    api.createFeedbacksPerPerformanceReview(performanceReview.id, feedbacksData)
+      .then((feedbacks) => {
+        onFeedbacksCreated(feedbacks);
+        closeModal();
+      })
+      .catch(error => console.log(error));
+  };
 
-const CreateFeedbacksModal = ({ employees, performanceReview, onFeedbacksCreated, closeModal }) => (
-  <div>
-    <Formik
-      initialValues={{
-        employee_ids: [],
-      }}
-      onSubmit={values => createFeedbacks(values, performanceReview, onFeedbacksCreated, closeModal)}
-    >
-      {formik => (
-        <div>
+  return (
+    <div>
+      <Formik
+        initialValues={{
+          employee_ids: [],
+        }}
+        onSubmit={values => createFeedbacks(values, performanceReview, onFeedbacksCreated, closeModal)}
+      >
+        {formik => (
           <div>
-            {employees.map(employee => <EmployeeCheckBox key={employee.id} name="employee_ids" value={employee.id} employee={employee} />)}
+            <div>
+              {employees.map(employee => <EmployeeCheckBox key={employee.id} name="employee_ids" value={employee.id} employee={employee} />)}
+            </div>
+            <button type="button" onClick={formik.submitForm}>submit</button>
           </div>
-          <button type="button" onClick={formik.submitForm}>submit</button>
-        </div>
-      )}
-    </Formik>
-  </div>
-);
+        )}
+      </Formik>
+    </div>
+  );
+}
 
 export default CreateFeedbacksModal;

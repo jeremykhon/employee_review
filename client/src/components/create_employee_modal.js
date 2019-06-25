@@ -1,9 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import BASE_URL from '../lib/base_url';
 import history from '../lib/history';
+import * as api from '../lib/api';
 
 const EmployeeSchema = Yup.object().shape({
   first_name: Yup.string()
@@ -21,23 +20,17 @@ const EmployeeSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const createEmployee = (values, onEmployeeCreated, closeModal) => {
-  axios({
-    method: 'POST',
-    url: `${BASE_URL}/admin/employees`,
-    data: {
-      employee: values,
-    },
-  })
-    .then((response) => {
-      history.push(`/admin/employees/${response.data.id}`);
-      onEmployeeCreated(response.data);
-      closeModal();
-    })
-    .catch(error => console.log(error));
-};
-
 const CreateEmployeeModal = ({ onEmployeeCreated, closeModal }) => {
+  const createEmployee = (employeeData) => {
+    api.createEmployee(employeeData)
+      .then((employee) => {
+        history.push(`/admin/employees/${employee.id}`);
+        onEmployeeCreated(employee);
+        closeModal();
+      })
+      .catch(error => console.log(error));
+  };
+
   return (
     <div>
       <Formik
@@ -48,8 +41,8 @@ const CreateEmployeeModal = ({ onEmployeeCreated, closeModal }) => {
           password: '',
         }}
         validationSchema={EmployeeSchema}
-        onSubmit={(values) => {
-          createEmployee(values, onEmployeeCreated, closeModal);
+        onSubmit={(employeeData) => {
+          createEmployee(employeeData);
         }}
       >
         {({ errors, touched }) => (

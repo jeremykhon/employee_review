@@ -1,9 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import BASE_URL from '../lib/base_url';
 import history from '../lib/history';
+import * as api from '../lib/api';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -12,19 +11,6 @@ const LoginSchema = Yup.object().shape({
   password: Yup.string()
     .required('Required'),
 });
-
-const login = (values) => {
-  return axios({
-    method: 'POST',
-    url: `${BASE_URL}/authenticate`,
-    data: values,
-  })
-    .then((response) => {
-      const authToken = response.data.auth_token;
-      localStorage.setItem('Authorization', authToken);
-      return authToken;
-    });
-};
 
 const LoginForm = ({ onLoginSuccess }) => (
   <div>
@@ -35,7 +21,7 @@ const LoginForm = ({ onLoginSuccess }) => (
       }}
       validationSchema={LoginSchema}
       onSubmit={(values) => {
-        login(values)
+        api.login(values)
           .then(onLoginSuccess)
           .catch(error => console.log(error));
       }}

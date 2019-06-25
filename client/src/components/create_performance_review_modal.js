@@ -1,8 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import BASE_URL from '../lib/base_url';
+import * as api from '../lib/api';
 
 const PerformanceReviewSchema = Yup.object().shape({
   title: Yup.string()
@@ -10,22 +9,16 @@ const PerformanceReviewSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const createPerformanceReview = (values, employee, closeModal, fetchEmployee) => {
-  axios({
-    method: 'POST',
-    url: `${BASE_URL}/admin/employees/${employee.id}/performance_reviews`,
-    data: {
-      performance_review: values,
-    },
-  })
-    .then(() => {
-      fetchEmployee(employee.id);
-      closeModal();
-    })
-    .catch(error => console.log(error));
-};
-
 const CreatePerformanceReviewModal = ({ employee, closeModal, fetchEmployee }) => {
+  const createPerformanceReview = (performanceReviewData) => {
+    api.createPerformanceReview(employee.id, performanceReviewData)
+      .then(() => {
+        fetchEmployee(employee.id);
+        closeModal();
+      })
+      .catch(error => console.log(error));
+  };
+
   return (
     <div>
       <Formik
@@ -33,8 +26,8 @@ const CreatePerformanceReviewModal = ({ employee, closeModal, fetchEmployee }) =
           title: '',
         }}
         validationSchema={PerformanceReviewSchema}
-        onSubmit={(values) => {
-          createPerformanceReview(values, employee, closeModal, fetchEmployee);
+        onSubmit={(performanceReviewData) => {
+          createPerformanceReview(performanceReviewData);
         }}
       >
         {({ errors, touched }) => (

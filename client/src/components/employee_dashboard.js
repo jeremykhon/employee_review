@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import FeedbackTodoTable from './feedback_todo_table';
 import FeedbackForm from './feedback_form';
-import BASE_URL from '../lib/base_url';
+import * as api from '../lib/api';
 
 class EmployeeDashboard extends Component {
   constructor() {
@@ -16,12 +15,12 @@ class EmployeeDashboard extends Component {
   }
 
   componentDidMount() {
-    this.fetchFeedbacksPerEmployee();
+    this.fetchFeedbacks();
   }
 
-  fetchFeedbacksPerEmployee = () => {
-    axios.get(`${BASE_URL}/admin/employees/${this.state.employee_id}/feedbacks`)
-      .then(response => this.setState({ feedbacks: response.data }))
+  fetchFeedbacks = () => {
+    api.fetchFeedbacks()
+      .then(feedbacks => this.setState({ feedbacks }))
       .catch(error => console.log(error));
   }
 
@@ -34,7 +33,7 @@ class EmployeeDashboard extends Component {
     return (
       <div className="container">
         <FeedbackTodoTable feedbacks={feedbacks} selectFeedback={this.selectFeedback} selectedFeedback={selectedFeedback} />
-        <FeedbackForm selectedFeedback={selectedFeedback} fetchFeedbacksPerEmployee={this.fetchFeedbacksPerEmployee} />
+        <FeedbackForm selectedFeedback={selectedFeedback} fetchFeedbacks={this.fetchFeedbacks} />
       </div>
     );
   }

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import BASE_URL from '../lib/base_url';
 import EmployeeInfoCard from './employee_info_card';
 import PerformanceReviewsContainer from './performance_reviews_container';
+import * as api from '../lib/api';
 
 class EmployeeProfile extends Component {
   constructor(props) {
@@ -24,8 +23,8 @@ class EmployeeProfile extends Component {
 
   fetchEmployee = (employeeId) => {
     if (employeeId) {
-      axios.get(`${BASE_URL}/admin/employees/${employeeId}`)
-        .then(response => this.setState({ employee: response.data }))
+      api.fetchEmployee(employeeId)
+        .then(employee => this.setState({ employee }))
         .catch(error => console.log(error));
     }
   }

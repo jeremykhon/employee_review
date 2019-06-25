@@ -1,8 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
-import axios from 'axios';
 import * as Yup from 'yup';
-import BASE_URL from '../lib/base_url';
+import * as api from '../lib/api';
 
 const FeedbackSchema = Yup.object().shape({
   comment: Yup.string()
@@ -13,18 +12,6 @@ const FeedbackSchema = Yup.object().shape({
     .max(5, 'give rating from 1-5')
     .required('Required'),
 });
-
-const updateFeedback = (values, id, fetchFeedbacksPerEmployee) => {
-  axios({
-    method: 'PATCH',
-    url: `${BASE_URL}/admin/feedbacks/${id}`,
-    data: {
-      feedback: values,
-    },
-  })
-    .then(fetchFeedbacksPerEmployee)
-    .catch(error => console.log(error));
-};
 
 const CompletedCheckBox = ({ name }) => {
   const handleChange = (field, form) => {
@@ -51,7 +38,13 @@ const CompletedCheckBox = ({ name }) => {
   );
 };
 
-const FeedbackForm = ({ selectedFeedback, fetchFeedbacksPerEmployee }) => {
+const FeedbackForm = ({ selectedFeedback, fetchFeedbacks }) => {
+  const updateFeedback = (feedbackData, id) => {
+    api.updateFeedback(id, feedbackData)
+      .then(fetchFeedbacks)
+      .catch(error => console.log(error));
+  };
+
   if (selectedFeedback) {
     const { comment, rating, id, completed_at } = selectedFeedback;
     let completed = completed_at;
@@ -66,7 +59,7 @@ const FeedbackForm = ({ selectedFeedback, fetchFeedbacksPerEmployee }) => {
           }}
           validationSchema={FeedbackSchema}
           onSubmit={(values) => {
-            updateFeedback(values, id, fetchFeedbacksPerEmployee);
+            updateFeedback(values, id, fetchFeedbacks);
           }}
         >
           {({ errors, touched }) => (

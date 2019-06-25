@@ -13,6 +13,7 @@ const PrivateRoute = ({ component: Component, adminOnly, employee, ...rest }) =>
           if (!adminOnly) {
             return <Component {...props} />;
           }
+
           return <Redirect to={{ pathname: '/', state: { from: props.location } }} />;
         }
 

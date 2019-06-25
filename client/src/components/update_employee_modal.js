@@ -1,8 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import BASE_URL from '../lib/base_url';
+import * as api from '../lib/api';
 
 const EmployeeSchema = Yup.object().shape({
   first_name: Yup.string()
@@ -18,21 +17,15 @@ const EmployeeSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const updateEmployee = (values, id, closeModal, fetchEmployee) => {
-  axios({
-    method: 'PATCH',
-    url: `${BASE_URL}/admin/employees/${id}`,
-    data: {
-      employee: values,
-    },
-  })
-    .then(() => {
-      fetchEmployee(id);
-      closeModal();
-    });
-};
-
 const UpdateEmployeeModal = ({ employee: { id, first_name, last_name, email }, closeModal, fetchEmployee }) => {
+  const updateEmployee = (values) => {
+    api.updateEmployee(id, values)
+      .then(() => {
+        fetchEmployee(id);
+        closeModal();
+      });
+  };
+
   return (
     <div>
       <Formik
@@ -42,8 +35,8 @@ const UpdateEmployeeModal = ({ employee: { id, first_name, last_name, email }, c
           email,
         }}
         validationSchema={EmployeeSchema}
-        onSubmit={(values) => {
-          updateEmployee(values, id, closeModal, fetchEmployee);
+        onSubmit={(employeeData) => {
+          updateEmployee(employeeData, id);
         }}
       >
         {({ errors, touched }) => (

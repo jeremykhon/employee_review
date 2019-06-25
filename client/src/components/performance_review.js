@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Modal from 'react-modal';
 import FeedbackTable from './feedback_table';
 import CreateFeedbacksModal from './create_feedbacks_modal';
-import BASE_URL from '../lib/base_url';
 import modalStyles from '../lib/modal_styles';
+import * as api from '../lib/api';
 
 Modal.setAppElement('#root');
 
@@ -31,8 +30,8 @@ class PerformanceReview extends Component {
 
   fetchFeedbacksPerPerformanceReview = () => {
     const { performanceReview } = this.props;
-    axios.get(`${BASE_URL}/admin/performance_reviews/${performanceReview.id}/feedbacks`)
-      .then(response => this.setState({ feedbacks: response.data }))
+    api.fetchFeedbacksPerPerformanceReview(performanceReview.id)
+      .then(feedbacks => this.setState({ feedbacks }))
       .catch(error => console.log(error));
   }
 
