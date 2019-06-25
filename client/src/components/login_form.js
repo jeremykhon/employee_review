@@ -14,23 +14,19 @@ const LoginSchema = Yup.object().shape({
 });
 
 const login = (values) => {
-  console.log(values);
-  // axios({
-  //   method: 'POST',
-  //   url: `${BASE_URL}/admin/employees`,
-  //   data: {
-  //     employee: values,
-  //   },
-  // })
-  //   .then((response) => {
-  //     history.push(`/admin/employees/${response.data.id}`);
-  //     onEmployeeCreated(response.data);
-  //     closeModal();
-  //   })
-  //   .catch(error => console.log(error));
+  return axios({
+    method: 'POST',
+    url: `${BASE_URL}/authenticate`,
+    data: values,
+  })
+    .then((response) => {
+      const authToken = response.data.auth_token;
+      localStorage.setItem('Authorization', authToken);
+      return authToken;
+    });
 };
 
-const LoginForm = () => (
+const LoginForm = ({ onLoginSuccess }) => (
   <div>
     <Formik
       initialValues={{
@@ -39,7 +35,9 @@ const LoginForm = () => (
       }}
       validationSchema={LoginSchema}
       onSubmit={(values) => {
-        login(values);
+        login(values)
+          .then(onLoginSuccess)
+          .catch(error => console.log(error));
       }}
     >
       {({ errors, touched }) => (
