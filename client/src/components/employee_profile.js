@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import BASE_URL from '../utilities/base_url';
+import BASE_URL from '../lib/base_url';
 import EmployeeInfoCard from './employee_info_card';
 import PerformanceReviewsContainer from './performance_reviews_container';
 

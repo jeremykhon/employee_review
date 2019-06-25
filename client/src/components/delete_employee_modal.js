@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import BASE_URL from '../utilities/base_url';
+import BASE_URL from '../lib/base_url';
 
 const deleteEmployee = (employee, fetchEmployees, clearEmployee) => {
   axios.delete(`${BASE_URL}/admin/employees/${employee.id}`)

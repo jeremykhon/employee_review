@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import axios from 'axios';
-import BASE_URL from '../utilities/base_url';
-import history from '../utilities/history';
+import BASE_URL from '../lib/base_url';
+import history from '../lib/history';
 import Navbar from './navbar';
 import LoginPage from './login_page';
 import AdminDashboard from './admin_dashboard';

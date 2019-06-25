@@ -1,5 +1,5 @@
 import React from 'react';
-import history from '../utilities/history';
+import history from '../lib/history';
 
 const selectEmployee = (employeeId) => {
   history.push(`/admin/employees/${employeeId}`);

@@ -3,8 +3,8 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import FeedbackTable from './feedback_table';
 import CreateFeedbacksModal from './create_feedbacks_modal';
-import BASE_URL from '../utilities/base_url';
-import modalStyles from '../utilities/modal_styles';
+import BASE_URL from '../lib/base_url';
+import modalStyles from '../lib/modal_styles';
 
 Modal.setAppElement('#root');
 

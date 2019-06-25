@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
-import BASE_URL from '../utilities/base_url';
+import BASE_URL from '../lib/base_url';
 
 const FeedbackSchema = Yup.object().shape({
   comment: Yup.string()

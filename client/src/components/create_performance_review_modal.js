@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import BASE_URL from '../utilities/base_url';
+import BASE_URL from '../lib/base_url';
 
 const PerformanceReviewSchema = Yup.object().shape({
   title: Yup.string()

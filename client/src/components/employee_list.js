@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import EmployeeListItem from './employee_list_item';
 import CreateEmployeeModal from './create_employee_modal';
-import modalStyles from '../utilities/modal_styles';
+import modalStyles from '../lib/modal_styles';
 
 Modal.setAppElement('#root');
 

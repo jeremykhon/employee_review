@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import PerformanceReview from './performance_review';
 import CreatePerformanceReviewModal from './create_performance_review_modal';
-import modalStyles from '../utilities/modal_styles';
+import modalStyles from '../lib/modal_styles';
 
 class PerformanceReviewsContainer extends Component {
   constructor(props) {

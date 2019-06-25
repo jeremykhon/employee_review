@@ -3,7 +3,7 @@ import axios from 'axios';
 import Sidebar from 'react-sidebar';
 import EmployeeList from './employee_list';
 import EmployeeProfile from './employee_profile';
-import BASE_URL from '../utilities/base_url';
+import BASE_URL from '../lib/base_url';
 
 const smallScreenMql = window.matchMedia('(min-width: 800px)');
 

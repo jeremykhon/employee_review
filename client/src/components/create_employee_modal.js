@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import BASE_URL from '../utilities/base_url';
-import history from '../utilities/history';
+import BASE_URL from '../lib/base_url';
+import history from '../lib/history';
 
 const EmployeeSchema = Yup.object().shape({
   first_name: Yup.string()

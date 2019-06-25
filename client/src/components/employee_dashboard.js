@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import FeedbackTodoTable from './feedback_todo_table';
 import FeedbackForm from './feedback_form';
-import BASE_URL from '../utilities/base_url';
+import BASE_URL from '../lib/base_url';
 
 class EmployeeDashboard extends Component {
   constructor() {
