@@ -23,7 +23,7 @@
   display: flex;
 }
 
-.white-button {
+.white-btn {
   padding: 5px 15px;
   border: 1px solid rgb(150, 150, 150);
   border-radius: 3px;
@@ -32,10 +32,13 @@
   cursor: pointer;
   font-size: 15px;
   transition: background-color 100ms ease-in;
-  margin-right: 10px;
 
   &:hover {
     color: white;
     background-color: black;  
   }
+}
+
+.employee-info-btn {
+  margin-right: 10px;
 }
