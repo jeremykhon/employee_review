@@ -62,7 +62,7 @@ class AdminDashboard extends Component {
     return (
       <div>
         <Sidebar
-          styles={{ sidebar: { backgroundColor: 'white' } }}
+          styles={{ sidebar: { zIndex: 1, backgroundColor: 'white' } }}
           sidebar={(
             <EmployeeList
               employees={employees}
