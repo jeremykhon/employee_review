@@ -1,8 +1,9 @@
 .employee-list-item {
-  padding: 5px 0;
+  padding: 5px 20px;
   border: 1px solid transparent;
 }
 
 .selected {
-  border: 1px solid red;
+  background-color: rgb(240,240,240);
+  text-shadow: 0 0 0.5px black;
 }
