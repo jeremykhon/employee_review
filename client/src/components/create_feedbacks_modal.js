@@ -19,14 +19,14 @@ const EmployeeCheckBox = ({ name, value, employee }) => {
     <Field name={name}>
       {({ field, form }) => (
         <div className="form-check">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            checked={field.value.includes(value)}
-            onChange={() => handleChange(field, form)}
-          />
           <label className="form-check-label">
-            {employee.first_name}
+            <input
+              className="form-check-input"
+              type="checkbox"
+              checked={field.value.includes(value)}
+              onChange={() => handleChange(field, form)}
+            />
+            {`${employee.first_name} ${employee.last_name}`}
           </label>
         </div>
       )}
@@ -53,7 +53,8 @@ const CreateFeedbacksModal = ({ employees, performanceReview, onFeedbacksCreated
         onSubmit={values => createFeedbacks(values, performanceReview, onFeedbacksCreated, closeModal)}
       >
         {formik => (
-          <div>
+          <div className="add-reviewers-form">
+            <div className="section-title">Add reviewers</div>
             <div className="form-group">
               {employees.map(employee => <EmployeeCheckBox key={employee.id} name="employee_ids" value={employee.id} employee={employee} />)}
             </div>
