@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::API
-  before_action :authenticate_request
+  before_action :authenticate_request, except: :fallback_index_html
   attr_reader :current_employee
+
+  def fallback_index_html
+    render file: 'public/index.html'
+  end
 
   private
 
