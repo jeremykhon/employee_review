@@ -13,12 +13,9 @@ const EmployeeSchema = Yup.object().shape({
     .min(2, 'Minimum 2 characters')
     .max(50, 'Maximum 50 characters')
     .required('Required'),
-  email: Yup.string()
-    .email('Invalid email')
-    .required('Required'),
 });
 
-const UpdateEmployeeModal = ({ employee: { id, first_name, last_name, email }, closeModal, fetchEmployee }) => {
+const UpdateEmployeeModal = ({ employee: { id, first_name, last_name }, closeModal, fetchEmployee }) => {
   const updateEmployee = (values) => {
     api.adminUpdateEmployee(id, values)
       .then(() => {
@@ -33,7 +30,6 @@ const UpdateEmployeeModal = ({ employee: { id, first_name, last_name, email }, c
         initialValues={{
           first_name,
           last_name,
-          email,
         }}
         validationSchema={EmployeeSchema}
         onSubmit={(employeeData) => {
@@ -52,12 +48,6 @@ const UpdateEmployeeModal = ({ employee: { id, first_name, last_name, email }, c
               <Field className={classNames('form-control', { 'is-invalid': errors.last_name })} name="last_name" />
               {errors.last_name && touched.last_name && (
                 <div className="invalid-feedback">{errors.last_name}</div>
-              )}
-            </div>
-            <div className="form-group">
-              <Field className={classNames('form-control', { 'is-invalid': errors.email })} name="email" type="email" />
-              {errors.email && touched.email && (
-                <div className="invalid-feedback">{errors.email}</div>
               )}
             </div>
             <button className="btn btn-default full-w-btn" type="submit">Submit</button>
