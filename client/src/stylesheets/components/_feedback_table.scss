@@ -1,3 +1,12 @@
 .feedback-table {
   margin-bottom: 10px;
 }
+
+.comment-cell {
+  max-width: 400px;
+  overflow-wrap: break-word;
+}
+
+.table-row {
+  cursor: pointer;
+}
