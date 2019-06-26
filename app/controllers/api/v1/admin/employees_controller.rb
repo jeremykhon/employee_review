@@ -26,7 +26,7 @@ class Api::V1::Admin::EmployeesController < Api::V1::Admin::AdminController
 
   # PATCH/PUT /api/v1/admin/employees/:id
   def update
-    @employee.update!(employee_params)
+    @employee.update!(employee_update_params)
     render json: @employee, only: %i[id first_name last_name email]
   end
 
@@ -34,6 +34,10 @@ class Api::V1::Admin::EmployeesController < Api::V1::Admin::AdminController
 
   def set_employee
     @employee = Employee.find_by!(id: params[:id])
+  end
+
+  def employee_update_params
+    params.require(:employee).permit(:first_name, :last_name)
   end
 
   def employee_params
