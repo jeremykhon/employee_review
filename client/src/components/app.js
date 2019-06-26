@@ -35,13 +35,9 @@ class App extends Component {
   }
 
   loadEmployee = () => {
-    const { authToken } = this.state;
-
     api.fetchCurrentEmployee()
-      .then(employee => {
-        this.setState({ employee });
-      })
-      .catch(error => console.log(error))
+      .then(employee => this.setState({ employee }))
+      .catch(error => console.log(error));
   }
 
   handleLoginSuccess = (authToken) => {
@@ -51,6 +47,10 @@ class App extends Component {
   isLoggedIn = () => {
     const { authToken } = this.state;
     return !!authToken;
+  }
+
+  handleLogOut = () => {
+    this.setState({ authToken: undefined, employee: undefined });
   }
 
   isLoading = () => {
@@ -70,7 +70,7 @@ class App extends Component {
 
     return (
       <Router history={history}>
-        <Navbar />
+        <Navbar employee={employee} onLogOut={this.handleLogOut} />
         <Switch>
           {/* Redirect */}
           <Route

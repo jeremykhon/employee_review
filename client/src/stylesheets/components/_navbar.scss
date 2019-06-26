@@ -1,6 +1,38 @@
 .navbar {
   background-color: black;
-  color: white;
+  color: rgb(200, 200, 200);
   z-index: 3;
   height: 50px;
+}
+
+.navbar-left {
+  display: flex;
+}
+
+.navbar-right {
+  display: flex;
+
+  .navbar-name {
+    margin-right: 10px;
+  }
+}
+
+.navbar-link {
+  padding: 0 15px;
+}
+
+.active {
+  text-shadow: 0 0 1px white;
+  color: white !important; 
+}
+
+.navbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign-out {
+  color: white;
+  cursor: pointer;
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import history from '../lib/history';
 import * as api from '../lib/api';
 
 const LoginSchema = Yup.object().shape({
