@@ -39,16 +39,16 @@ class EmployeeProfile extends Component {
     if (employee) {
       return (
         <div className="employee-profile">
-          <div className="section-titles">Employee Information</div>
+          <div className="section-title">Employee Information</div>
           <EmployeeInfoCard employee={employee} fetchEmployee={this.fetchEmployee} fetchEmployees={fetchEmployees} clearEmployee={this.clearEmployee} />
-          <div className="section-titles">Performance Reviews</div>
+          <div className="section-title">Performance Reviews</div>
           <PerformanceReviewsContainer employees={employees} fetchEmployee={this.fetchEmployee} employee={employee} performanceReviews={employee.performance_reviews} />
         </div>
       );
     }
     return (
       <div className="employee-profile">
-        nothing
+        Please select an employee on the left
       </div>
     );
   }
