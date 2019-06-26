@@ -14,8 +14,10 @@ const DeleteEmployeeModal = ({ employee, fetchEmployees, clearEmployee, closeMod
   return (
     <div>
       <div>Are you sure you want to delete this employee? All ongoing feedbacks that he/she is participating and performance reports that he/she belongs to will also be deleted</div>
-      <button type="button" onClick={() => { deleteEmployee(); }}>yes</button>
-      <button type="button" onClick={closeModal}>no</button>
+      <div className="btns-container">
+        <button className="btn btn-outline-dark" type="button" onClick={() => { deleteEmployee(); }}>Yes</button>
+        <button className="btn btn-outline-dark" type="button" onClick={closeModal}>No</button>
+      </div>
     </div>
   );
 };

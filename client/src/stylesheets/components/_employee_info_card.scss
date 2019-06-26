@@ -23,23 +23,3 @@
 .employee-info-buttons-container {
   display: flex;
 }
-
-.white-btn {
-  padding: 5px 15px;
-  border: 1px solid rgb(150, 150, 150);
-  border-radius: 3px;
-  color: inherit;
-  background-color: white;
-  cursor: pointer;
-  font-size: 15px;
-  transition: background-color 100ms ease-in;
-
-  &:hover {
-    color: white;
-    background-color: black;  
-  }
-}
-
-.employee-info-btn {
-  margin-right: 10px;
-}

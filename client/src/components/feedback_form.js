@@ -1,15 +1,16 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
+import classNames from 'classnames';
 import * as api from '../lib/api';
 
 const FeedbackSchema = Yup.object().shape({
   comment: Yup.string()
     .max(20, 'Maximum 20 characters')
     .required('Required'),
-  rating: Yup.number()
-    .min(1, 'give rating from 1-5')
-    .max(5, 'give rating from 1-5')
+  rating: Yup.number('Invalid number')
+    .min(1, 'Must be between 1 and 5')
+    .max(5, 'Must be between 1 and 5')
     .required('Required'),
 });
 
@@ -23,16 +24,19 @@ const CompletedCheckBox = ({ name }) => {
   };
 
   return (
-    <Field name={name}>
+    <Field className="form-check" name={name}>
       {({ field, form }) => (
-        <label>
+        <div className="form-check">
           <input
+            className="form-check-input"
             type="checkbox"
             checked={field.value}
             onChange={() => handleChange(field, form)}
           />
-          completed?
-        </label>
+          <label className="form-check-label">
+            I have completed my feedback
+          </label>
+        </div>
       )}
     </Field>
   );
@@ -64,18 +68,22 @@ const FeedbackForm = ({ selectedFeedback, fetchFeedbacks }) => {
         >
           {({ errors, touched }) => (
             <Form className="feedback-form">
-              <div>
-                <Field name="comment" />
-                {errors.comment && touched.comment ? (<div>{errors.comment}</div>) : null}
+              <div className="form-group">
+                <Field className={classNames('form-control', { 'is-invalid': errors.comment })} component="textarea" name="comment" />
+                {errors.comment && touched.comment && (
+                  <div className="invalid-feedback">{errors.comment}</div>
+                )}
               </div>
-              <div>
-                <Field name="rating" />
-                {errors.rating && touched.rating ? (<div>{errors.rating}</div>) : null}
+              <div className="form-group">
+                <Field className={classNames('form-control', { 'is-invalid': errors.rating })} type="number" name="rating" />
+                {errors.rating && touched.rating && (
+                  <div className="invalid-feedback">{errors.rating}</div>
+                )}
               </div>
-              <div>
+              <div className="form-group">
                 <CompletedCheckBox name="completed" value={completed} />
               </div>
-              <button type="submit">Submit</button>
+              <button className="btn btn-outline-dark" type="submit">Submit</button>
             </Form>
           )}
         </Formik>

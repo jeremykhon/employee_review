@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import classNames from 'classnames';
 import * as api from '../lib/api';
 
 const PerformanceReviewSchema = Yup.object().shape({
@@ -32,11 +33,13 @@ const CreatePerformanceReviewModal = ({ employee, closeModal, fetchEmployee }) =
       >
         {({ errors, touched }) => (
           <Form className="performance-review-form form">
-            <div>
-              <Field className="hello" name="title" placeholder="Title" />
-              {errors.title && touched.title ? (<div>{errors.title}</div>) : null}
+            <div className="form-group">
+              <Field className={classNames('form-control', { 'is-invalid': errors.title })} name="title" placeholder="Title" />
+              {errors.title && touched.title && (
+                <div className="invalid-feedback">{errors.title}</div>
+              )}
             </div>
-            <button type="submit">Submit</button>
+            <button className="btn btn-outline-dark" type="submit">Submit</button>
           </Form>
         )}
       </Formik>

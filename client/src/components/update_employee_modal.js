@@ -1,16 +1,17 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import classNames from 'classnames';
 import * as api from '../lib/api';
 
 const EmployeeSchema = Yup.object().shape({
   first_name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
+    .min(2, 'Minimum2 characters')
+    .max(50, 'Maximum 50 characters')
     .required('Required'),
   last_name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
+    .min(2, 'Minimum 2 characters')
+    .max(50, 'Maximum 50 characters')
     .required('Required'),
   email: Yup.string()
     .email('Invalid email')
@@ -41,19 +42,25 @@ const UpdateEmployeeModal = ({ employee: { id, first_name, last_name, email }, c
       >
         {({ errors, touched }) => (
           <Form className="employee-form">
-            <div>
-              <Field className="hello" name="first_name" />
-              {errors.first_name && touched.first_name ? (<div>{errors.first_name}</div>) : null}
+            <div className="form-group">
+              <Field className={classNames('form-control', { 'is-invalid': errors.first_name })} name="first_name" />
+              {errors.first_name && touched.first_name && (
+                <div className="invalid-feedback">{errors.first_name}</div>
+              )}
             </div>
-            <div>
-              <Field name="last_name" />
-              {errors.last_name && touched.last_name ? (<div>{errors.last_name}</div>) : null}
+            <div className="form-group">
+              <Field className={classNames('form-control', { 'is-invalid': errors.last_name })} name="last_name" />
+              {errors.last_name && touched.last_name && (
+                <div className="invalid-feedback">{errors.last_name}</div>
+              )}
             </div>
-            <div>
-              <Field name="email" type="email" />
-              {errors.email && touched.email ? (<div>{errors.email}</div>) : null}
+            <div className="form-group">
+              <Field className={classNames('form-control', { 'is-invalid': errors.email })} name="email" type="email" />
+              {errors.email && touched.email && (
+                <div className="invalid-feedback">{errors.email}</div>
+              )}
             </div>
-            <button type="submit">Submit</button>
+            <button className="btn btn-outline-dark" type="submit">Submit</button>
           </Form>
         )}
       </Formik>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import classNames from 'classnames';
 import * as api from '../lib/api';
 
 const LoginSchema = Yup.object().shape({
@@ -27,15 +28,19 @@ const LoginForm = ({ onLoginSuccess }) => (
     >
       {({ errors, touched }) => (
         <Form className="login-form">
-          <div>
-            <Field autoComplete="username" name="email" type="email" placeholder="Email" />
-            {errors.email && touched.email ? (<div>{errors.email}</div>) : null}
+          <div className="form-group">
+            <Field className={classNames('form-control', { 'is-invalid': errors.email })} autoComplete="username" name="email" type="email" placeholder="Email" />
+            {errors.email && touched.email && (
+              <div className="invalid-feedback">{errors.email}</div>
+            )}
           </div>
-          <div>
-            <Field autoComplete="new-password" name="password" type="password" placeholder="Password" />
-            {errors.password && touched.password ? (<div>{errors.password}</div>) : null}
+          <div className="form-group">
+            <Field className={classNames('form-control', { 'is-invalid': errors.password })} autoComplete="new-password" name="password" type="password" placeholder="Password" />
+            {errors.password && touched.password && (
+              <div className="invalid-feedback">{errors.password}</div>
+            )}
           </div>
-          <button type="submit">Submit</button>
+          <button className="btn btn-outline-dark" type="submit">Submit</button>
         </Form>
       )}
     </Formik>

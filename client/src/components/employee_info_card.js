@@ -61,9 +61,9 @@ class EmployeeInfoCard extends Component {
           </div>
         </div>
         <hr />
-        <div className="employee-info-buttons-container">
-          <button className="white-btn employee-info-btn" onClick={this.handleUpdateClick} type="button">Update</button>
-          <button className="white-btn employee-info-btn" onClick={this.handleDeleteClick} type="button">Delete</button>
+        <div className="btns-container">
+          <button className="btn btn-outline-dark" onClick={this.handleUpdateClick} type="button">Update</button>
+          <button className="btn btn-outline-dark" onClick={this.handleDeleteClick} type="button">Delete</button>
         </div>
         <Modal
           isOpen={this.state.modalIsOpen}

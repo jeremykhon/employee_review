@@ -63,7 +63,7 @@ class PerformanceReview extends Component {
         <div>
           {this.renderFeedbacks()}
         </div>
-        <button className="white-btn" type="button" onClick={this.openModal}>Add reviewers</button>
+        <button className="btn btn-outline-dark" type="button" onClick={this.openModal}>Add reviewers</button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
