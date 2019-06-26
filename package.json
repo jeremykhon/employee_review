@@ -1,0 +1,25 @@
+{
+  "name": "employee-review",
+  "version": "1.0.0",
+  "description": "Design a web application that allows employees to submit feedback toward each other's performance review. Here are the [Challenge Details](https://github.com/Pay-Baymax/FullStackEngineerChallenge)",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "cd client && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "npm run build && npm run deploy && echo 'Client built!'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jehon11/employee_review.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jehon11/employee_review/issues"
+  },
+  "homepage": "https://github.com/jehon11/employee_review#readme"
+}
