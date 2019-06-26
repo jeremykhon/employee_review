@@ -58,9 +58,9 @@ the backend and frontend server should now be running on localhost:3001 and loca
 $ rspec
 ```
 
-## Demo
+## Live Demo
 
-Login with the admin account below
+Login here (https://employee-reviews.jeremyhon.com) with the admin account below
 
 | Username 	| Password 	|
 |-----------------	|:--------:	|
