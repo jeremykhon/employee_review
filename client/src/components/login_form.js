@@ -28,19 +28,22 @@ const LoginForm = ({ onLoginSuccess }) => (
     >
       {({ errors, touched }) => (
         <Form className="login-form">
+          <div className="form-label">Email</div>
           <div className="form-group">
-            <Field className={classNames('form-control', { 'is-invalid': errors.email })} autoComplete="username" name="email" type="email" placeholder="Email" />
+            <Field className={classNames('form-control', { 'is-invalid': errors.email })} autoComplete="username" name="email" type="email" placeholder="admin@hooli.com" />
             {errors.email && touched.email && (
               <div className="invalid-feedback">{errors.email}</div>
             )}
           </div>
+          <div className="form-label">Password</div>
           <div className="form-group">
-            <Field className={classNames('form-control', { 'is-invalid': errors.password })} autoComplete="new-password" name="password" type="password" placeholder="Password" />
+            <Field className={classNames('form-control', { 'is-invalid': errors.password })} autoComplete="new-password" name="password" type="password" placeholder="******" />
             {errors.password && touched.password && (
               <div className="invalid-feedback">{errors.password}</div>
             )}
           </div>
-          <button className="btn btn-outline-dark" type="submit">Submit</button>
+          <hr />
+          <button className="btn btn-outline-dark login-btn" type="submit">Sign in</button>
         </Form>
       )}
     </Formik>

@@ -6,7 +6,7 @@ import * as api from '../lib/api';
 
 const FeedbackSchema = Yup.object().shape({
   comment: Yup.string()
-    .max(20, 'Maximum 20 characters')
+    .max(280, 'Maximum 280 characters')
     .required('Required'),
   rating: Yup.number('Invalid number')
     .min(1, 'Must be between 1 and 5')
