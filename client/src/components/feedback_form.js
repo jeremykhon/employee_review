@@ -27,13 +27,13 @@ const CompletedCheckBox = ({ name }) => {
     <Field className="form-check" name={name}>
       {({ field, form }) => (
         <div className="form-check">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            checked={field.value}
-            onChange={() => handleChange(field, form)}
-          />
           <label className="form-check-label">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              checked={field.value}
+              onChange={() => handleChange(field, form)}
+            />
             I have completed my feedback
           </label>
         </div>
@@ -68,14 +68,23 @@ const FeedbackForm = ({ selectedFeedback, fetchFeedbacks }) => {
         >
           {({ errors, touched }) => (
             <Form className="feedback-form">
+              <div className="form-label">Comment</div>
               <div className="form-group">
-                <Field className={classNames('form-control', { 'is-invalid': errors.comment })} component="textarea" name="comment" />
+                <Field className={classNames('form-control', { 'is-invalid': errors.comment })} component="textarea" name="comment" placeholder="He was a very helpful colleague who always put others first" />
                 {errors.comment && touched.comment && (
                   <div className="invalid-feedback">{errors.comment}</div>
                 )}
               </div>
+              <div className="form-label">Rating</div>
               <div className="form-group">
-                <Field className={classNames('form-control', { 'is-invalid': errors.rating })} type="number" name="rating" />
+                <Field className={classNames('form-control', { 'is-invalid': errors.rating })} component="select" name="rating">
+                  <option>Select rating</option>
+                  <option value="1">1 - Needs improvement</option>
+                  <option value="2">2 - Below expectations</option>
+                  <option value="3">3 - As expected</option>
+                  <option value="4">4 - Very Good</option>
+                  <option value="5">5 - Outstanding</option>
+                </Field>
                 {errors.rating && touched.rating && (
                   <div className="invalid-feedback">{errors.rating}</div>
                 )}
