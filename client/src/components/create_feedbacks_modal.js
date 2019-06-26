@@ -41,7 +41,8 @@ const CreateFeedbacksModal = ({ employees, performanceReview, onFeedbacksCreated
         onFeedbacksCreated(feedbacks);
         closeModal();
       })
-      .catch(error => console.log(error));
+      // TODO: placeholder for error handling
+      .catch(error => console.error(error));
   };
 
   return (

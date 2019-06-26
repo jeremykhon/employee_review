@@ -25,7 +25,7 @@ class EmployeeDashboard extends Component {
           this.setState({ selectedFeedback: feedbacks[0] });
         }
       })
-      .catch(error => console.log(error));
+      .catch(error => console.error(error));
   }
 
   selectFeedback = (feedback) => {

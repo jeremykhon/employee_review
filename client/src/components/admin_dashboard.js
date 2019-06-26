@@ -44,7 +44,8 @@ class AdminDashboard extends Component {
           history.push(`/admin/employees/${employees[0].id}`);
         }
       })
-      .catch(error => console.log(error));
+      // TODO: placeholder for error handling
+      .catch(error => console.error(error));
   }
 
   handleEmployeeCreated = (employee) => {

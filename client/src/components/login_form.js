@@ -23,7 +23,8 @@ const LoginForm = ({ onLoginSuccess }) => (
       onSubmit={(values) => {
         api.login(values)
           .then(onLoginSuccess)
-          .catch(error => console.log(error));
+          // TODO: placeholder for error handling
+          .catch(error => console.error(error));
       }}
     >
       {({ errors, touched }) => (

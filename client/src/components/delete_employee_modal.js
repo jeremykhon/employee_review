@@ -8,7 +8,8 @@ const DeleteEmployeeModal = ({ employee, fetchEmployees, clearEmployee, closeMod
         fetchEmployees();
         clearEmployee();
       })
-      .catch(error => console.log(error));
+      // TODO: placeholder for error handling
+      .catch(error => console.error(error));
   };
 
   return (

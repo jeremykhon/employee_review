@@ -46,7 +46,8 @@ const FeedbackForm = ({ selectedFeedback, fetchFeedbacks }) => {
   const updateFeedback = (feedbackData, id) => {
     api.updateFeedback(id, feedbackData)
       .then(fetchFeedbacks)
-      .catch(error => console.log(error));
+      // TODO: placeholder for error handling
+      .catch(error => console.error(error));
   };
 
   if (selectedFeedback) {

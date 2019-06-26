@@ -17,7 +17,8 @@ const CreatePerformanceReviewModal = ({ employee, closeModal, fetchEmployee }) =
         fetchEmployee(employee.id);
         closeModal();
       })
-      .catch(error => console.log(error));
+      // TODO: placeholder for error handling
+      .catch(error => console.error(error));
   };
 
   return (

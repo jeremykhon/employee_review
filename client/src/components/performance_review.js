@@ -32,7 +32,8 @@ class PerformanceReview extends Component {
     const { performanceReview } = this.props;
     api.adminFetchFeedbacksPerPerformanceReview(performanceReview.id)
       .then(feedbacks => this.setState({ feedbacks }))
-      .catch(error => console.log(error));
+      // TODO: placeholder for error handling
+      .catch(error => console.error(error));
   }
 
   handleFeedbacksCreated = (feedbacks) => {

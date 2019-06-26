@@ -25,7 +25,8 @@ class EmployeeProfile extends Component {
     if (employeeId) {
       api.adminFetchEmployee(employeeId)
         .then(employee => this.setState({ employee }))
-        .catch(error => console.log(error));
+        // TODO: placeholder for error handling
+        .catch(error => console.error(error));
     }
   }
 

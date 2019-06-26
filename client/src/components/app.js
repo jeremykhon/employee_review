@@ -35,7 +35,8 @@ class App extends Component {
   loadEmployee = () => {
     api.fetchCurrentEmployee()
       .then(employee => this.setState({ employee }))
-      .catch(error => console.log(error));
+      // TODO: placeholder for error handling
+      .catch(error => console.error(error));
   }
 
   handleLoginSuccess = (authToken) => {
