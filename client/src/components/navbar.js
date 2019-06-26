@@ -15,8 +15,8 @@ const Navbar = ({ employee, onLogOut }) => {
           {employee.is_admin
             ? (
               <div className="navbar-left">
-                <NavLink className="navbar-link" to="/admin">Admin dashboard</NavLink>
-                <NavLink className="navbar-link" to="/employee">Employee dashboard</NavLink>
+                <NavLink className="navbar-link" to="/admin">Admin view</NavLink>
+                <NavLink className="navbar-link" to="/employee">Employee view</NavLink>
               </div>
             )
             : <div>Employee dashboard</div>
