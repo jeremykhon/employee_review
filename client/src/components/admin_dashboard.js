@@ -3,6 +3,7 @@ import Sidebar from 'react-sidebar';
 import EmployeeList from './employee_list';
 import EmployeeProfile from './employee_profile';
 import * as api from '../lib/api';
+import history from '../lib/history';
 
 const smallScreenMql = window.matchMedia('(min-width: 800px)');
 
@@ -11,12 +12,13 @@ class AdminDashboard extends Component {
     super(props);
     this.state = {
       employees: [],
-      selectedEmployeeId: null || this.props.match.params.employee_id,
+      selectedEmployeeId: this.props.match.params.employee_id,
       sidebarOpen: false,
       sidebarDocked: smallScreenMql.matches,
     };
   }
 
+  // update selectedEmployeeId state when url param changes
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.match.params.employee_id !== prevState.selectedEmployeeId) {
       return { selectedEmployeeId: nextProps.match.params.employee_id };
@@ -34,8 +36,14 @@ class AdminDashboard extends Component {
   }
 
   fetchEmployees = () => {
+    const { selectedEmployeeId } = this.state;
     api.adminFetchEmployees()
-      .then(employees => this.setState({ employees }))
+      .then((employees) => {
+        this.setState({ employees });
+        if (selectedEmployeeId === undefined) {
+          history.push(`/admin/employees/${employees[0].id}`);
+        }
+      })
       .catch(error => console.log(error));
   }
 
