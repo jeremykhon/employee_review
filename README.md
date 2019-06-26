@@ -1,24 +1,90 @@
-# README
+# Full Stack Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Design a web application that allows employees to submit feedback toward each other's performance review.
+Here are the [Challenge Details](https://github.com/Pay-Baymax/FullStackEngineerChallenge)
 
-Things you may want to cover:
+## Tech Stack
 
-* Ruby version
+| Tech/lib | Purpose |
+|---------------|:------------------:|
+| Ruby on Rails | Backend server |
+| React | Frontend client |
+| Database | PostgreSQL |
+| Unit tests | Rspec, Jest/Enzyme |
 
-* System dependencies
+## Assumptions
 
-* Configuration
+- Admin is also an employee
+- Employees can have multiple performance reviews
+- A performance review can have multiple feedbacks done by the same reviewer
 
-* Database creation
+## Installation
 
-* Database initialization
+Clone repo
 
-* How to run the test suite
+```
+$ git clone git@github.com:jehon11/employee_review.git employee_review
+$ cd employee_review
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Install dependencies
+```
+$ bundle
+```
 
-* Deployment instructions
+Create database and seed it
+```
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
+```
 
-* ...
+Install frontend dependencies
+```
+$ yarn --cwd client
+```
+
+Start backend and frontend server
+```
+$ rails s -p 3001
+$ yarn --cwd client start
+```
+
+the backend and frontend server should now be running on localhost:3001 and localhost:3000 respectively
+
+## Run tests
+
+```
+$ rspec
+```
+
+## Demo
+
+Login with the admin account below
+
+| Username 	| Password 	|
+|-----------------	|:--------:	|
+| admin@hooli.com 	| password 	|
+
+## Active Functionality
+
+- Login/logout and redirect to correct dashboard (Admin/Employee)
+- Protected views for Admin/Employee
+- Protected routes for Admin/Employee api requests
+- Admin view all employees
+- Admin create new employee
+- Admin remove employee 
+- Admin update employee
+- Admin view performance reviews for employee
+- Admin create new performance review for employee
+- Admin view all feedbacks for each performance review
+- Admin create new feedback for a performance review (add reviewer)
+- Admin create multiple feedbacks at once (add reviewers)
+- Employee view list of feedbacks assigned to them
+- Employee update feedback
+
+## Database Design
+
+<p align="left">
+  <img width="725" height="400" src="https://res.cloudinary.com/dmzwcfe2e/image/upload/v1561557847/Screen_Shot_2019-06-26_at_23.02.38.png">
+</p>
