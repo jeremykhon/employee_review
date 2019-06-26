@@ -8,8 +8,6 @@ class EmployeeDashboard extends Component {
     super();
     this.state = {
       feedbacks: [],
-      // remove after implementing authentication service
-      employee_id: 4,
       selectedFeedback: null,
     };
   }
@@ -19,8 +17,14 @@ class EmployeeDashboard extends Component {
   }
 
   fetchFeedbacks = () => {
+    const { selectedFeedback } = this.state
     api.fetchFeedbacks()
-      .then(feedbacks => this.setState({ feedbacks }))
+      .then((feedbacks) => {
+        this.setState({ feedbacks });
+        if (!selectedFeedback) {
+          this.setState({ selectedFeedback: feedbacks[0] });
+        }
+      })
       .catch(error => console.log(error));
   }
 
@@ -31,8 +35,10 @@ class EmployeeDashboard extends Component {
   render() {
     const { feedbacks, selectedFeedback } = this.state;
     return (
-      <div className="container">
+      <div className="container employee-dashboard">
+        <div className="section-title">Feedbacks to give</div>
         <FeedbackTodoTable feedbacks={feedbacks} selectFeedback={this.selectFeedback} selectedFeedback={selectedFeedback} />
+        <div className="section-title">Give feedback</div>
         <FeedbackForm selectedFeedback={selectedFeedback} fetchFeedbacks={this.fetchFeedbacks} />
       </div>
     );
