@@ -1,3 +1,8 @@
 .btns-container .btn {
   margin-right: 10px;
 }
+
+.btn-default {
+  @include button-outline-variant(black);
+  background: white;
+}

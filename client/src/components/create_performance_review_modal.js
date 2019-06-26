@@ -39,7 +39,7 @@ const CreatePerformanceReviewModal = ({ employee, closeModal, fetchEmployee }) =
                 <div className="invalid-feedback">{errors.title}</div>
               )}
             </div>
-            <button className="btn btn-outline-dark" type="submit">Submit</button>
+            <button className="btn btn-default full-w-btn" type="submit">Submit</button>
           </Form>
         )}
       </Formik>

@@ -72,7 +72,7 @@ const CreateEmployeeModal = ({ onEmployeeCreated, closeModal }) => {
                 <div className="invalid-feedback">{errors.password}</div>
               )}
             </div>
-            <button className="btn btn-outline-dark" type="submit">Submit</button>
+            <button className="btn btn-default full-w-btn" type="submit">Submit</button>
           </Form>
         )}
       </Formik>

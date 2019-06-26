@@ -57,7 +57,7 @@ const CreateFeedbacksModal = ({ employees, performanceReview, onFeedbacksCreated
             <div className="form-group">
               {employees.map(employee => <EmployeeCheckBox key={employee.id} name="employee_ids" value={employee.id} employee={employee} />)}
             </div>
-            <button className="btn btn-outline-dark" type="button" onClick={formik.submitForm}>Submit</button>
+            <button className="btn btn-default full-w-btn" type="button" onClick={formik.submitForm}>Submit</button>
           </div>
         )}
       </Formik>

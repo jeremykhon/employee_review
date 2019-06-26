@@ -83,7 +83,7 @@ const FeedbackForm = ({ selectedFeedback, fetchFeedbacks }) => {
               <div className="form-group">
                 <CompletedCheckBox name="completed" value={completed} />
               </div>
-              <button className="btn btn-outline-dark" type="submit">Submit</button>
+              <button className="btn btn-default" type="submit">Submit</button>
             </Form>
           )}
         </Formik>

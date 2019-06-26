@@ -60,7 +60,7 @@ const UpdateEmployeeModal = ({ employee: { id, first_name, last_name, email }, c
                 <div className="invalid-feedback">{errors.email}</div>
               )}
             </div>
-            <button className="btn btn-outline-dark" type="submit">Submit</button>
+            <button className="btn btn-default full-w-btn" type="submit">Submit</button>
           </Form>
         )}
       </Formik>

@@ -43,7 +43,7 @@ const LoginForm = ({ onLoginSuccess }) => (
             )}
           </div>
           <hr />
-          <button className="btn btn-outline-dark login-btn" type="submit">Sign in</button>
+          <button className="btn btn-default full-w-btn" type="submit">Sign in</button>
         </Form>
       )}
     </Formik>

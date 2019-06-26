@@ -28,7 +28,7 @@ class EmployeeList extends Component {
       <div className="employee-list">
         <div className="employee-list-top-container">
           <div className="employee-list-title">All Employees</div>
-          <button className="btn btn-outline-dark" type="button" onClick={this.openModal}>Add employee</button>
+          <button className="btn btn-default" type="button" onClick={this.openModal}>Add employee</button>
         </div>
         {employees.map(employee => (
           <EmployeeListItem

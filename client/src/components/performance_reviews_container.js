@@ -31,7 +31,7 @@ class PerformanceReviewsContainer extends Component {
             ))}
           </div>
           <hr />
-          <button className="btn btn-outline-dark" type="button" onClick={this.openModal}>New performance review</button>
+          <button className="btn btn-default" type="button" onClick={this.openModal}>New performance review</button>
           <Modal
             isOpen={this.state.modalIsOpen}
             onRequestClose={this.closeModal}
