@@ -146,7 +146,7 @@ RSpec.describe "API::V1::Admin::Employees", type: :request do
 
   describe "PUT /api/v1/admin/employees/:id" do
     let(:employee) { employees.first }
-    let(:new_employee_attrs) { attributes_for(:employee).slice(:first_name, :last_name, :email, :password) }
+    let(:new_employee_attrs) { attributes_for(:employee).slice(:first_name, :last_name, :password) }
     let(:uri) { "/api/v1/admin/employees/#{employee.id}" }
 
     it "returns http success status" do
