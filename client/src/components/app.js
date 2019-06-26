@@ -36,14 +36,14 @@ class App extends Component {
     api.fetchCurrentEmployee()
       .then(employee => this.setState({ employee }))
       // TODO: placeholder for error handling
-      .catch(error => console.error(error));
+      .catch(() => this.setState({ authToken: null }));
   }
 
   handleLoginSuccess = (authToken) => {
-    this.setState({ authToken }, this.loadEmployee)
+    this.setState({ authToken }, this.loadEmployee);
   }
 
-  isLoggedIn = () => {
+  hasAuthToken = () => {
     const { authToken } = this.state;
     return !!authToken;
   }
@@ -56,7 +56,7 @@ class App extends Component {
     const { employee } = this.state;
 
     // Only loading when logged in but waiting for `loadEmployee`
-    return this.isLoggedIn()
+    return this.hasAuthToken()
       ? employee === undefined
       : false;
   }
@@ -76,7 +76,7 @@ class App extends Component {
             exact
             path="/"
             render={props => (
-              this.isLoggedIn()
+              this.hasAuthToken()
                 ? <Redirect to={getDashboardPath(employee)} />
                 : <LoginPage onLoginSuccess={this.handleLoginSuccess} {...props} />
             )}
