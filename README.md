@@ -61,6 +61,8 @@ $ rspec
 
 Login here (https://employee-reviews.jeremyhon.com) with the admin account below
 
+Please allow for a few seconds for the server on Heroku to awake from sleep
+
 | Username 	| Password 	|
 |-----------------	|:--------:	|
 | admin@hooli.com 	| password 	|
