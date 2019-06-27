@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import history from '../lib/history';
 import getAuthToken from '../lib/get_auth_token';
-import Navbar from './navbar';
+import NavigationBar from './navigation_bar';
 import LoginPage from './login_page';
 import AdminDashboard from './admin_dashboard';
 import EmployeeDashboard from './employee_dashboard';
@@ -69,7 +69,7 @@ class App extends Component {
 
     return (
       <Router history={history}>
-        <Navbar employee={employee} onLogOut={this.handleLogOut} />
+        <NavigationBar employee={employee} onLogOut={this.handleLogOut} />
         <Switch>
           {/* Redirect */}
           <Route
