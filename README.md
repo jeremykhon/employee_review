@@ -46,8 +46,7 @@ $ yarn --cwd client
 
 Start backend and frontend server
 ```
-$ rails s -p 3001
-$ yarn --cwd client start
+$ rake start
 ```
 
 the backend and frontend server should now be running on localhost:3001 and localhost:3000 respectively
