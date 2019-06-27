@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  include ActionController::MimeResponds
   before_action :authenticate_request, except: :fallback_index_html
   attr_reader :current_employee
 
