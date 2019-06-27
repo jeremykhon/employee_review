@@ -71,7 +71,7 @@ class AdminDashboard extends Component {
     return (
       <div>
         <Sidebar
-          styles={{ sidebar: { zIndex: 1, backgroundColor: 'white' } }}
+          styles={{ sidebar: { zIndex: 2, backgroundColor: 'white' }, dragHandle: { zIndex: 2 } }}
           sidebar={(
             <EmployeeList
               employees={employees}
@@ -80,6 +80,7 @@ class AdminDashboard extends Component {
               onEmployeeCreated={this.handleEmployeeCreated}
             />
           )}
+          touchHandleWidth={40}
           open={sidebarOpen}
           docked={sidebarDocked}
           onSetOpen={this.onSetSidebarOpen}
