@@ -1,6 +1,7 @@
 # Full Stack Challenge
 
-Design a web application that allows employees to submit feedback toward each other's performance review.
+Design a web application that allows employees to submit feedback toward each other's performance review. Done as part of Paypay's interview process
+
 Here are the [Challenge Details](https://github.com/Pay-Baymax/FullStackEngineerChallenge)
 
 ## Tech Stack
@@ -10,7 +11,7 @@ Here are the [Challenge Details](https://github.com/Pay-Baymax/FullStackEngineer
 | Ruby on Rails | Backend server |
 | React | Frontend client |
 | Database | PostgreSQL |
-| Unit tests | Rspec, Jest/Enzyme |
+| Unit tests | Rspec, Jest/Enzyme (WIP) |
 
 ## Assumptions
 
