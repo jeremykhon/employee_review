@@ -1,6 +1,6 @@
 # Full Stack Challenge
 
-Design a web application that allows employees to submit feedback toward each other's performance review. Done in 4 days as part of Paypay's interview process
+Design a web application that allows employees to submit feedback toward each other's performance review. Done in 4 days as part of an interview process
 
 Here are the [Challenge Details](https://github.com/Pay-Baymax/FullStackEngineerChallenge)
 
