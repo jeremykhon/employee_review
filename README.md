@@ -4,6 +4,8 @@ Design a web application that allows employees to submit feedback toward each ot
 
 #### - [Live demo ](https://employee-reviews.jeremyhon.com)
 
+Please login with "admin@hooli.com", pw: "password"
+
 #### - [Challenge Details](https://github.com/Pay-Baymax/FullStackEngineerChallenge)
 
 ## Tech Stack
