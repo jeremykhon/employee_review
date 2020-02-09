@@ -2,7 +2,9 @@
 
 Design a web application that allows employees to submit feedback toward each other's performance review
 
-Here are the [Challenge Details](https://github.com/Pay-Baymax/FullStackEngineerChallenge)
+#### - [Live demo ](https://employee-reviews.jeremyhon.com)
+
+#### - [Challenge Details](https://github.com/Pay-Baymax/FullStackEngineerChallenge)
 
 ## Tech Stack
 
