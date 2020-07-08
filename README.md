@@ -2,7 +2,7 @@
 
 Design a web application that allows employees to submit feedback toward each other's performance review
 
-#### - [Live demo ](https://employee-reviews.jeremyhon.com)
+#### - [Live demo ](https://360review.jeremyhon.com)
 
 Please login with "admin@hooli.com", pw: "password"
 
